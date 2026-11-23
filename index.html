@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>いしけん！〜天然石研究部〜｜369人の中から推しの石を見つけよう</title>
+<meta name="description" content="天然石を女の子にした「いしけん！〜天然石研究部〜」公式サイト。私立結晶ヶ丘学園・天然石研究部の369人から、女の子・石・質問の3つの入口で推しを見つけよう。">
+<meta property="og:title" content="いしけん！〜天然石研究部〜">
+<meta property="og:description" content="369人の部員から、あなたの推しの石を見つけよう。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://motonory-a.github.io/ishiken369/">
+<meta name="theme-color" content="#DCCFFB">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;700;800&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="hd">
+  <a href="#/" class="logo" aria-label="いしけん！ホームへ">
+    <span class="logo-gem" aria-hidden="true"></span>
+    <span class="logo-txt"><b>いしけん！</b><small>〜天然石研究部〜</small></span>
+  </a>
+  <button class="menu-btn" id="menuBtn" aria-label="メニュー" aria-expanded="false"><span></span><span></span><span></span></button>
+</header>
+<nav class="drawer" id="drawer" hidden>
+  <a href="#/">ホーム</a><a href="#/girls">女の子から探す</a><a href="#/stones">石から探す</a><a href="#/quiz">質問から探す</a><a href="#/oshi">推しベスト5</a><a href="#/calendar">誕生日カレンダー</a><a href="#/about">いしけん！について</a>
+</nav>
+<main id="app" tabindex="-1"></main>
+<footer class="ft">
+  <p>いしけん！〜天然石研究部〜</p>
+  <p class="ft-links"><a href="https://www.instagram.com/ishiken369/" target="_blank" rel="noopener">Instagram @ishiken369</a>／<a href="https://kojigen.base.shop/" target="_blank" rel="noopener">高次元SHOP</a></p>
+  <p class="ft-note">石の言い伝えは昔から伝わるお話で、効果を約束するものではありません。<br>登場人物はすべて架空の人物です。</p>
+  <p class="ft-copy">© リュウライド株式会社</p>
+</footer>
+<nav class="tabs" aria-label="メインメニュー">
+  <a href="#/" data-tab="home"><i class="ic ic-home"></i>ホーム</a>
+  <a href="#/girls" data-tab="girls"><i class="ic ic-girls"></i>女の子</a>
+  <a href="#/stones" data-tab="stones"><i class="ic ic-gem"></i>石から</a>
+  <a href="#/quiz" data-tab="quiz"><i class="ic ic-q"></i>質問から</a>
+  <a href="#/oshi" data-tab="oshi"><i class="ic ic-heart"></i>推しベスト5</a>
+  <a href="#/calendar" data-tab="calendar"><i class="ic ic-cal"></i>誕生日<br>カレンダー</a>
+</nav>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="data/chars.js"></script>
+<script src="data/images.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
