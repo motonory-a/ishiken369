@@ -8,7 +8,7 @@ if not os.path.exists(XML):
 cas = cv2.CascadeClassifier(XML)
 os.makedirs("img/bust", exist_ok=True)
 found = 0; miss = []
-SKIP = {"268", "281", "352", "70"}  # うまく切り出せない絵は全身絵をそのまま使う
+SKIP = {"268", "281", "352", "70", "111"}  # うまく切り出せない絵は全身絵をそのまま使う
 for p in sorted(glob.glob("img/main/*.webp")):
     n = os.path.basename(p).split(".")[0]
     out = f"img/bust/{n}.webp"
