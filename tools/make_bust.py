@@ -52,4 +52,5 @@ js = open("data/images.js").read()
 d = json.loads(js[js.index("=") + 1:].rstrip(";\n"))
 for k, v in d.items():
     if os.path.exists(f"img/bust/{k}.webp"): v["bust"] = f"img/bust/{k}.webp"
+    else: v.pop("bust", None)
 open("data/images.js", "w").write("window.IMAGES=" + json.dumps(d, ensure_ascii=False, separators=(",", ":")) + ";")
