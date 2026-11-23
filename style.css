@@ -224,3 +224,7 @@ main{max-width:520px;margin:0 auto;padding:0 14px 24px;outline:none}
 .hero-pic.is-full .pic img{object-fit:contain;background:#fff}
 .full-btn{position:absolute;left:8px;bottom:8px;background:rgba(255,255,255,.92)}
 .gcard .pic img,.friends .pic img,.best-row .pic img,.oshi-item .pic img,.res .pic img,.scard .face img,.today .pic img{object-position:50% 20%}
+.ohayo{margin-top:16px}
+.ohayo-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.ohayo-row label{font-family:var(--head);font-weight:700;color:var(--navy)}
+.ohayo-row input{font:inherit;font-size:16px;padding:8px 10px;border-radius:12px;border:1.2px solid rgba(157,123,230,.45);color:var(--navy);background:#fff}

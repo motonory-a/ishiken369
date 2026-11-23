@@ -82,6 +82,33 @@ function bracelet(cols){
   return `<div class="bracelet" aria-hidden="true">${html}</div>`;
 }
 
+/* ---------- 毎朝のおはよう(カレンダー) ---------- */
+function ohayoTime(){ try{ return localStorage.getItem("ishiken_ohayo") || "07:30"; }catch(e){ return "07:30"; } }
+function makeIcs(hhmm){
+  const [h,m] = hhmm.split(":").map(Number);
+  const d = new Date(); d.setDate(d.getDate()+1);
+  const ymd = `${d.getFullYear()}${String(d.getMonth()+1).padStart(2,"0")}${String(d.getDate()).padStart(2,"0")}`;
+  const hm = `${String(h).padStart(2,"0")}${String(m).padStart(2,"0")}00`;
+  const end = new Date(2000,0,1,h,m+5); const he = `${String(end.getHours()).padStart(2,"0")}${String(end.getMinutes()).padStart(2,"0")}00`;
+  const url = location.origin + location.pathname + "#/today";
+  const stamp = new Date().toISOString().replace(/[-:]/g,"").replace(/\.\d+/,"");
+  return ["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//ishiken369//ohayo//JA","CALSCALE:GREGORIAN","BEGIN:VTIMEZONE","TZID:Asia/Tokyo","BEGIN:STANDARD","DTSTART:19700101T000000","TZOFFSETFROM:+0900","TZOFFSETTO:+0900","TZNAME:JST","END:STANDARD","END:VTIMEZONE","BEGIN:VEVENT",
+    `UID:ishiken-ohayo-${Date.now()}@motonory-a.github.io`,`DTSTAMP:${stamp}`,
+    `DTSTART;TZID=Asia/Tokyo:${ymd}T${hm}`,`DTEND;TZID=Asia/Tokyo:${ymd}T${he}`,"RRULE:FREQ=DAILY",
+    "SUMMARY:いしけん！今日の誕生日の子から「おはよう」",
+    `DESCRIPTION:今日の誕生日の子に会いに行こう\\n${url}`,`URL:${url}`,
+    "BEGIN:VALARM","ACTION:DISPLAY","DESCRIPTION:いしけん！おはよう","TRIGGER:PT0M","END:VALARM",
+    "END:VEVENT","END:VCALENDAR"].join("\r\n");
+}
+function addOhayo(){
+  const el = document.getElementById("ohayoTime"); const v = (el && el.value) || "07:30";
+  try{ localStorage.setItem("ishiken_ohayo", v); }catch(e){}
+  const blob = new Blob([makeIcs(v)], {type:"text/calendar;charset=utf-8"});
+  const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = "ishiken-ohayo.ics";
+  document.body.appendChild(a); a.click(); setTimeout(()=>{ URL.revokeObjectURL(a.href); a.remove(); }, 1500);
+  toast(`毎朝${v}の予定を作りました。カレンダーに追加してください`);
+}
+
 /* ---------- 画面 ---------- */
 function vHome(){
   const t = byDate(todayKey());
@@ -113,6 +140,11 @@ function vHome(){
   </div>
   <h2 class="sec-t">あなたの推しベスト5</h2>
   <div class="card best-row">${row}</div>
+  <section class="card pad ohayo">
+    <h2 class="sec-t" style="margin-top:0">好きな時間に「おはよう」を受け取る</h2>
+    <p class="muted" style="margin:0 0 8px">スマホのカレンダーに毎朝の予定を入れます。時間になると通知が出て、押すとその日の誕生日の子に会えます。</p>
+    <div class="ohayo-row"><label>毎朝 <input type="time" id="ohayoTime" value="${esc(ohayoTime())}" step="300"></label><button class="btn pri" id="ohayoAdd">カレンダーに入れる</button></div>
+  </section>
   <a class="card insta" href="${INSTA}" target="_blank" rel="noopener"><span class="ig"></span><span><b>毎朝7:30に「おはよう」が届く</b><br><span class="muted">Instagram @ishiken369 で部員たちの日常を配信中</span></span></a>`;
 }
 
@@ -348,6 +380,7 @@ function route(){
     case "oshi": html = vOshi(); break;
     case "calendar": html = vCalendar(); break;
     case "about": html = vAbout(); tab=""; break;
+    case "today": { const t = byDate(todayKey())[0] || BY.get(1); location.replace(`#/girl/${t.n}`); return; }
     default: html = vNotFound();
   }
   app.innerHTML = html;
@@ -385,6 +418,7 @@ document.addEventListener("click", e=>{
   if(t.id==="qshare"){ const r = quizRank(); share(`わたしに合ういしけん部員は ${r.map(c=>`${c.name}（${c.stone}）`).join("・")} でした！`); return; }
   if(d.up!==undefined || d.down!==undefined){ const v = store.get(); const i = +(d.up ?? d.down); const j = d.up!==undefined? i-1 : i+1; [v[i],v[j]]=[v[j],v[i]]; store.set(v); rerender(); return; }
   if(d.del){ toggleOshi(+d.del); rerender(); return; }
+  if(t.id==="ohayoAdd"){ addOhayo(); return; }
   if(t.id==="oshare"){ const v = store.get(); share(`わたしのいしけん推しベスト5：${v.map((n,i)=>`${i+1}位 ${BY.get(n).name}`).join("／")}`); return; }
   if(d.share){ const c = BY.get(+d.share); share(`いしけん！の${c.name}（${c.stone}）`); return; }
   if(d.cm){ CAL.m = +d.cm; CAL.d = Math.min(CAL.d, new Date(2024,CAL.m,0).getDate()); rerender(); return; }
