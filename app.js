@@ -41,8 +41,9 @@ const clean = s => String(s||"").replace(/【[^】]*】/g,"").trim();
 const esc = s => String(s??"").replace(/[&<>"']/g, m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));
 const pad3 = n => String(n).padStart(3,"0");
 function mainSrc(c){ const v = IMG[c.n]; return v ? (typeof v==="string"? v : v.main) : ""; }
-function pic(c, cls=""){
-  const src = mainSrc(c);
+function bustSrc(c){ const v = IMG[c.n]; return (v && v.bust) || mainSrc(c); }
+function pic(c, cls="", full=false){
+  const src = full ? mainSrc(c) : bustSrc(c);
   const style = `--c1:${colorOf(c)}55;--c2:${colorOf(c)}cc`;
   const ph = `<div class="ph"${src?' hidden':''}><i></i><b>${esc(c.name.slice(0,1))}</b></div>`;
   const im = src ? `<img src="${esc(src)}" alt="${esc(c.name)}（${esc(c.stone)}）" loading="lazy" decoding="async" onerror="this.remove();this.nextElementSibling.hidden=false">` : "";
@@ -154,7 +155,7 @@ function vGirl(n){
   return `
   <a class="back" href="#/girls">‹ 一覧へ</a>
   <section class="card hero">
-    ${pic(c)}
+    <div class="hero-pic">${pic(c)}${mainSrc(c)&&IMG[c.n]&&IMG[c.n].bust?`<button class="btn sm full-btn" data-full="${c.n}">全身を見る</button>`:""}</div>
     <div class="hero-tx">
       <span class="kana">No.${pad3(c.n)}</span>
       <h1>${esc(c.name)}</h1>
@@ -388,6 +389,7 @@ document.addEventListener("click", e=>{
   if(d.share){ const c = BY.get(+d.share); share(`いしけん！の${c.name}（${c.stone}）`); return; }
   if(d.cm){ CAL.m = +d.cm; CAL.d = Math.min(CAL.d, new Date(2024,CAL.m,0).getDate()); rerender(); return; }
   if(d.cd){ CAL.d = +d.cd; rerender(); return; }
+  if(d.full){ const c = BY.get(+d.full); const box = t.parentElement; const isFull = box.classList.toggle("is-full"); box.querySelector(".pic").outerHTML = pic(c, "", isFull); t.textContent = isFull? "顔を見る" : "全身を見る"; return; }
 });
 document.addEventListener("input", e=>{
   if(e.target.id==="q"){ LS.q = e.target.value; LS.shown = 40; renderList(); }
