@@ -217,3 +217,4 @@ main{max-width:520px;margin:0 auto;padding:0 14px 24px;outline:none}
 .days{gap:4px}
 .day{min-width:0;padding:0;font-size:13px;border-radius:10px}
 .card.pad:has(.days){padding:10px}
+.hero .pic img{object-fit:contain;object-position:50% 0}
