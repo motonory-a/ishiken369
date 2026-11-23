@@ -1,0 +1,23 @@
+# ドライブの絵を取り出して、サイト用に小さくして保存する(手動で動かす)
+name: 絵を取り込む
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: pip install pillow
+      - run: python tools/fetch_images.py
+      - name: 変わったものを保存
+        run: |
+          git config user.name "ishiken-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data img
+          git diff --cached --quiet || git commit -m "ドライブの絵を取り込み"
+          git push
