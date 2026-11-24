@@ -69,9 +69,11 @@ def main():
         if "sheets" in v: v["sheets"].sort()
     out_images = {str(k): v for k, v in sorted(images.items())}
     # トップ用の集合絵(05_キャラ画像「集合絵_トップ用.png」)。差し替えに備えて毎回取り直す
-    GROUP_ID = "13bAAR_id-mxuK9_p3fVLwkDOPr6FSIyL"
-    if os.path.exists("img/group.webp"): os.remove("img/group.webp")
-    if save(GROUP_ID, "img/group.webp", 1000): out_images["group"] = "img/group.webp"
+    # 公開フォルダ01に置いたコピーを名前で探す(いちばん新しいもの=一覧の最後)
+    gs = [it for it in man.get("01", []) if it["name"].startswith("集合絵")]
+    if gs:
+        if os.path.exists("img/group.webp"): os.remove("img/group.webp")
+        if save(gs[-1]["id"], "img/group.webp", 1000): out_images["group"] = "img/group.webp"
     js = "window.IMAGES=" + json.dumps(out_images, ensure_ascii=False, separators=(",", ":")) + ";"
     open("data/images.js", "w").write(js)
     print("メイン絵", sum(1 for v in images.values() if "main" in v), "人 / 設定画", sum(len(v.get("sheets", [])) for v in images.values()), "枚")
