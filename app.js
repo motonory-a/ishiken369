@@ -3,7 +3,10 @@
 const C = window.CHARS || [];
 const IMG = window.IMAGES || {};
 const BY = new Map(C.map(c=>[c.n,c]));
-const SHOP = "https://kojigen.base.shop/";
+const LINE_ADD = "https://lin.ee/zapyKLV";
+const LINE_ID = "@425vvwoh";
+const lineOrder = (stones, who) => `https://line.me/R/oaMessage/${encodeURIComponent(LINE_ID)}/?${encodeURIComponent(`【いしけん！ブレスレットの相談】\n${who? who+"\n":""}使いたい石：${stones.join("・")}\n手首のサイズ：\nご希望（色・予算など）：`)}`;
+const lineBtns = (stones, who, label="LINEでブレスレットを相談・注文") => `<a class="btn line" href="${lineOrder(stones, who)}" target="_blank" rel="noopener">${label} ›</a>`;
 const INSTA = "https://www.instagram.com/ishiken369/";
 const app = document.getElementById("app");
 
@@ -109,6 +112,10 @@ function addOhayo(){
   toast(`毎朝${v}の予定を作りました。カレンダーに追加してください`);
 }
 
+function lineCard(){
+  return `<a class="card line-card" href="${LINE_ADD}" target="_blank" rel="noopener"><span class="line-ic">LINE</span><span><b>公式LINEを友だち追加</b><br><span class="muted">新しい部員の紹介や、推しの石のブレスレット相談はこちらから</span></span></a>`;
+}
+
 /* ---------- 画面 ---------- */
 function vHome(){
   const t = byDate(todayKey());
@@ -145,6 +152,7 @@ function vHome(){
     <p class="muted" style="margin:0 0 8px">スマホのカレンダーに毎朝の予定を入れます。時間になると通知が出て、押すとその日の誕生日の子に会えます。</p>
     <div class="ohayo-row"><label>毎朝 <input type="time" id="ohayoTime" value="${esc(ohayoTime())}" step="300"></label><button class="btn pri" id="ohayoAdd">カレンダーに入れる</button></div>
   </section>
+  ${lineCard()}
   <a class="card insta" href="${INSTA}" target="_blank" rel="noopener"><span class="ig"></span><span><b>毎朝7:30に「おはよう」が届く</b><br><span class="muted">Instagram @ishiken369 で部員たちの日常を配信中</span></span></a>`;
 }
 
@@ -216,7 +224,7 @@ function vGirl(n){
   <div class="friends">${fr.map(f=>`<a href="#/girl/${f.n}">${pic(f)}${esc(f.name)}</a>`).join("")}</div>
   <section class="card shop" style="margin-top:16px">
     ${bracelet([colorOf(c),"#ffffff",colorOf(c),"#f3ece0"])}
-    <div class="shop-tx"><h3>${esc(c.name)}の石でつくる<br>ブレスレット</h3><a class="btn pri sm" href="${SHOP}" target="_blank" rel="noopener">高次元SHOPで見る ›</a></div>
+    <div class="shop-tx"><h3>${esc(c.name)}の石でつくる<br>ブレスレット</h3><p class="muted" style="margin:0 0 8px">${esc(c.stone)}を使ったオーダーメイド。LINEで気軽に相談できます。</p>${lineBtns([c.stone], `推し：${c.name}（No.${pad3(c.n)}）`, "LINEで相談する")}</div>
   </section>
   <p class="center"><button class="btn sm" data-share="${c.n}">この子をシェア</button></p>`;
 }
@@ -265,7 +273,7 @@ function vStone(name){
   <h2 class="sec-t">この石の担当の子</h2>
   <div class="grid2">${s.list.map(gcard).join("")}</div>
   <section class="card shop" style="margin-top:16px">${bracelet([colorOf(c),"#ffffff"])}
-    <div class="shop-tx"><h3>${esc(s.name)}の<br>ブレスレット</h3><a class="btn pri sm" href="${SHOP}" target="_blank" rel="noopener">高次元SHOPで見る ›</a></div></section>`;
+    <div class="shop-tx"><h3>${esc(s.name)}の<br>ブレスレット</h3>${lineBtns([s.name], "", "LINEで相談する")}</div></section>`;
 }
 
 /* 質問から探す */
@@ -318,6 +326,9 @@ function vQuizResult(){
     <button class="btn" id="qretry">↻ もう一度診断する</button>
     <a class="btn pri" href="${INSTA}" target="_blank" rel="noopener">Instagramでこの子に会う ›</a>
   </div>
+  <section class="card shop" style="margin-top:14px">${bracelet(r.map(colorOf))}
+    <div class="shop-tx"><h3>この3人の石で<br>ブレスレットを作る</h3><p class="muted" style="margin:0 0 8px">${r.map(c=>esc(c.stone)).join("・")}</p>${lineBtns(r.map(c=>c.stone), "診断で合った子："+r.map(c=>c.name).join("・"), "LINEで相談する")}</div></section>
+  ${lineCard()}
   <p class="center"><button class="btn sm" id="qshare">結果をシェア</button></p>`;
 }
 
@@ -337,8 +348,9 @@ function vOshi(){
   <p class="center muted">📱 会員登録なしで、このスマホに保存されます</p>
   ${items}
   ${v.length<5? `<a class="add-slot" href="#/girls">＋ 推しを追加（あと${5-v.length}人）</a>`:""}
-  ${v.length? `<section class="card shop">${bracelet(cols.length?cols:["#c9b2ff"])}
-    <div class="shop-tx"><h3>ベスト5の石でつくる<br>ブレスレット案</h3><p class="muted" style="margin:0 0 8px">${v.map(n=>esc(BY.get(n).stone)).join("・")}</p><a class="btn pri sm" href="${SHOP}" target="_blank" rel="noopener">高次元SHOPでオーダーする ›</a></div></section>
+  ${v.length? `<section class="card shop">${bracelet(cols.slice(0,3).length?cols.slice(0,3):["#c9b2ff"])}
+    <div class="shop-tx"><h3>推しベスト3の石でつくる<br>ブレスレット案</h3><p class="muted" style="margin:0 0 8px">${v.slice(0,3).map(n=>esc(BY.get(n).stone)).join("・")}</p>${lineBtns(v.slice(0,3).map(n=>BY.get(n).stone), "推しベスト3："+v.slice(0,3).map(n=>BY.get(n).name).join("・"), "このブレスレットをLINEで注文")}</div></section>
+  ${lineCard()}
   <p class="center"><button class="btn" id="oshare">ベスト5をシェア</button></p>`
   : `<p class="center">まだ推しがいません。<br>3つの入口から見つけてみよう！</p><div class="row-btns" style="justify-content:center"><a class="btn" href="#/girls">女の子から</a><a class="btn" href="#/stones">石から</a><a class="btn" href="#/quiz">質問から</a></div>`}`;
 }

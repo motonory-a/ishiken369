@@ -238,3 +238,7 @@ main{max-width:520px;margin:0 auto;padding:0 14px 24px;outline:none}
 .hero2 .hero-tx{flex-direction:row;flex-wrap:wrap;align-items:center;gap:4px 12px;padding:12px 16px}
 .hero2 .hero-tx h1{font-size:28px}
 .hero2 .hero-tx .btn{margin-left:auto}
+.btn.line{background:#06C755;color:#fff;border-color:#06C755;font-size:13.5px;padding:9px 14px}
+.line-card{display:flex;align-items:center;gap:12px;margin-top:16px;padding:14px 16px;text-decoration:none;color:var(--navy);border-color:#06C755}
+.line-ic{width:44px;height:44px;border-radius:12px;background:#06C755;color:#fff;font-weight:800;font-size:12px;display:grid;place-items:center;flex:none}
+.line-card b{font-family:var(--head)}
