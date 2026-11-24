@@ -1101,6 +1101,11 @@
 "path": "01"
 },
 {
+"name": "4コマ_021_からまわり.png",
+"id": "1aWAL2voPDw1ynSHMFtebMbPfDnkT332U",
+"path": "01"
+},
+{
 "name": "集合絵_トップ用.png",
 "id": "1yVqkr1OVi5atwXwuxSoleOC_c59Mq2l3",
 "path": "01"
@@ -2305,6 +2310,11 @@
 "path": "03"
 },
 {
+"name": "012_ラヴィ_場面3.png",
+"id": "1sHtPwZsBFz899cgzaUdJVRb9aL6aotvk",
+"path": "03"
+},
+{
 "name": "012_ラヴィ_表情.png",
 "id": "1H0P33IDSQw-2C37PNm5i5hK0bANrCLXL",
 "path": "03"
@@ -2317,6 +2327,11 @@
 {
 "name": "013_ピアメ_三面図.png",
 "id": "1u0LuBvNT-Awq-Fzv2tzsML-RJihh6qGe",
+"path": "03"
+},
+{
+"name": "013_ピアメ_場面1.png",
+"id": "1L6r0SRVM9PTNmW6k0Yz7vW_MY5u2po2c",
 "path": "03"
 },
 {
@@ -4022,6 +4037,16 @@
 {
 "name": "127_フロラ_表情.png",
 "id": "1e2Rk7ReOb7oSClzVPVd7JxKFAZb7Nshd",
+"path": "03"
+},
+{
+"name": "128_プレナ_三面図.png",
+"id": "1g4LTJBS_W-5KvUdg3ZZlTnn-c8YiaZmZ",
+"path": "03"
+},
+{
+"name": "128_プレナ_表情.png",
+"id": "1C6dnJBSfg5QBtS8GpF7ZkXFI4PDGy6Uh",
 "path": "03"
 },
 {
