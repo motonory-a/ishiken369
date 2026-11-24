@@ -1061,6 +1061,11 @@
 "path": "01"
 },
 {
+"name": "4コマ_013_こわくないよ.png",
+"id": "1roWNa402KATPV8Tqj0XLEHJ4opD4worX",
+"path": "01"
+},
+{
 "name": "集合絵_トップ用.png",
 "id": "1yVqkr1OVi5atwXwuxSoleOC_c59Mq2l3",
 "path": "01"
@@ -2162,6 +2167,16 @@
 {
 "name": "009_ユウヒ_三面図.png",
 "id": "1LIYVvQicD0-WhjwxrFH4Q67w-nUL0ila",
+"path": "03"
+},
+{
+"name": "009_ユウヒ_場面1.png",
+"id": "1x_R4ECrQwV21OmTw6eSOJl7wQb97Zlu5",
+"path": "03"
+},
+{
+"name": "009_ユウヒ_場面2.png",
+"id": "1klfqjkxXGGpYVQzDXKC3j2XBZsyzvt92",
 "path": "03"
 },
 {
@@ -3867,6 +3882,16 @@
 {
 "name": "123_マラカ_表情.png",
 "id": "1HCsRRgUVGGxmV14hyU1rNIN9qZ8EOffQ",
+"path": "03"
+},
+{
+"name": "124_アズナ_三面図.png",
+"id": "1hgHjr0KOpI4Zr4Ui_jl1ZCFKQN5g_CwB",
+"path": "03"
+},
+{
+"name": "124_アズナ_表情.png",
+"id": "1uGWSfmI_ult2I1OFZmBfyMb7gkBPYrwP",
 "path": "03"
 },
 {
