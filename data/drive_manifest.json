@@ -1152,7 +1152,7 @@
 },
 {
 "name": "4コマ_031_たからもの.png",
-"id": "1GUSn67Q4nw2mVsJoM3fjRYUJTl80cDv7",
+"id": "1RwUhbS7WYnbJooF1xD-_3fFsgxQHvDnQ",
 "path": "01"
 },
 {
@@ -2507,6 +2507,11 @@
 {
 "name": "017_ハマリ_場面2.png",
 "id": "1T_Ok4DWauElGuj4vVBWxXHJdVkNeIHra",
+"path": "03"
+},
+{
+"name": "017_ハマリ_場面3.png",
+"id": "1ySl7mckTHkfjoyKvTyhhtNzLE3eras8A",
 "path": "03"
 },
 {
@@ -4217,6 +4222,11 @@
 {
 "name": "132_ジルナ_三面図.png",
 "id": "12qAqql4nBkfekTaF9ibxu_qYh-GEtmVQ",
+"path": "03"
+},
+{
+"name": "132_ジルナ_表情.png",
+"id": "1cAqXzsRk7ku_fDPpJaFIB322piudVxnS",
 "path": "03"
 },
 {
