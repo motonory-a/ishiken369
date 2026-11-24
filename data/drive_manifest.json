@@ -1111,6 +1111,11 @@
 "path": "01"
 },
 {
+"name": "4コマ_023_いってらっしゃい.png",
+"id": "1gV8rZKNUgzqiRw_XIy3B4ldxyTS2FpRH",
+"path": "01"
+},
+{
 "name": "集合絵_トップ用.png",
 "id": "1yVqkr1OVi5atwXwuxSoleOC_c59Mq2l3",
 "path": "01"
@@ -2345,6 +2350,11 @@
 "path": "03"
 },
 {
+"name": "013_ピアメ_場面3.png",
+"id": "152Bf1a2TCfS9rr4NE2QaDUU4hStNDnes",
+"path": "03"
+},
+{
 "name": "013_ピアメ_表情.png",
 "id": "1m0LWNMHCQQq8AKdb20CkefY30v_mqkHD",
 "path": "03"
@@ -2357,6 +2367,11 @@
 {
 "name": "014_ファナ_三面図.png",
 "id": "1-MI2F0-bw0kwamTTaN-IW8SRpRCSVjZP",
+"path": "03"
+},
+{
+"name": "014_ファナ_場面1.png",
+"id": "1T88PEmU6o_rcoAI8TJYC3hWfu5-TS9ZV",
 "path": "03"
 },
 {
@@ -4062,6 +4077,16 @@
 {
 "name": "128_プレナ_表情.png",
 "id": "1C6dnJBSfg5QBtS8GpF7ZkXFI4PDGy6Uh",
+"path": "03"
+},
+{
+"name": "129_ペリナ_三面図.png",
+"id": "1tuUgALI2YRImS1qm4x-mdiko3yXh3BX0",
+"path": "03"
+},
+{
+"name": "129_ペリナ_表情.png",
+"id": "1A8t2RSxPQHbePbgoLe4beCefHt7Z-3XE",
 "path": "03"
 },
 {
