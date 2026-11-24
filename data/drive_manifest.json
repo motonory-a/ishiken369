@@ -1870,6 +1870,11 @@
 "path": "03"
 },
 {
+"name": "001_スイ_場面0.png",
+"id": "1UFVFhrBy00kFpIVXO_GyW0G-lcZmoo-b",
+"path": "03"
+},
+{
 "name": "001_スイ_場面2.png",
 "id": "1gVh7h8sKd2_PSRV7FLuSJt8ffoF9zs-a",
 "path": "03"
@@ -1887,6 +1892,21 @@
 {
 "name": "002_アメリア_三面図.png",
 "id": "14SEH4w13KyDXS2oPvlSKxOQB2-h5Xo_y",
+"path": "03"
+},
+{
+"name": "002_アメリア_場面0.png",
+"id": "1tJkZJeHdp_1AJDl0lGTw_cKWcmozl0c6",
+"path": "03"
+},
+{
+"name": "002_アメリア_場面1.png",
+"id": "1cK03YHJ2nz9rZEg0rk5qHV2grZiJ2p2-",
+"path": "03"
+},
+{
+"name": "002_アメリア_場面2.png",
+"id": "1J044szfwdFqbiuTuCpS0UiseQMoWJKE4",
 "path": "03"
 },
 {
@@ -3607,6 +3627,16 @@
 {
 "name": "117_マグナ_表情.png",
 "id": "16finiALSmr8atY9OEvqoQUCwDPD5th21",
+"path": "03"
+},
+{
+"name": "118_ソディ_三面図.png",
+"id": "1P_OS8-OzUv-xwDdgfJ-r31sXHcy5N5c1",
+"path": "03"
+},
+{
+"name": "118_ソディ_表情.png",
+"id": "1F9Jskg1FMtWZtRsqJiFHFe9DINpCvteS",
 "path": "03"
 },
 {
