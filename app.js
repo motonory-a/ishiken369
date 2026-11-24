@@ -594,6 +594,7 @@ document.addEventListener("click", e=>{
   openLens(e.clientX, e.clientY, false);
 });
 window.addEventListener("hashchange", closeLens);
+document.addEventListener("contextmenu", e=>{ if(e.target.closest(".hero369")) e.preventDefault(); });
 window.addEventListener("resize", ()=>LP && drawLens());
 
 /* ---------- 操作 ---------- */

@@ -384,3 +384,6 @@ body.lb-open .mosaic{animation-play-state:paused}
 .glitter i:nth-child(9){left:50%;top:99%;animation-delay:3.0s}
 .glitter i:nth-child(10){left:88%;top:40%;animation-delay:3.3s}
 @media (prefers-reduced-motion:reduce){.glitter{display:none}}
+/* 長押しで画像メニューが出ないように */
+.hero369,.hero369 img,.lens,.lens *{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none}
+.mosaic img{pointer-events:none;-webkit-user-drag:none}
