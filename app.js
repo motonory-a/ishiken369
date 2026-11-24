@@ -145,11 +145,13 @@ function vHome(){
   }
   return `
   <section class="hero369" aria-label="369人の部員">
-    <div class="mosaic"><img src="img/mosaic.webp" alt="いしけん！の部員369人" width="1200" height="1200"></div>
+    <div class="sparkles" aria-hidden="true">${"<i></i>".repeat(14)}</div>
+    <div class="mosaic"><img src="img/mosaic.webp" alt="いしけん！の部員369人" width="1400" height="1400"><div class="hits" style="--d:${(window.MOSAIC||{}).d||4.5}%">${((window.MOSAIC||{}).p||[]).map(([n,x,y])=>`<button class="hit" data-face="${n}" style="left:${x}%;top:${y}%" aria-label="${esc((BY.get(n)||{}).name||"")}"></button>`).join("")}</div></div>
     <div class="h-center${IMG.group?" has-group":""}">
-      ${IMG.group? `<a href="${IMG.group}" target="_blank" rel="noopener"><img class="group" src="${IMG.group}" alt="いしけん！主要メンバーの集合絵"></a>`:`<div class="h-copy"><span class="h-count" data-count="369">0</span><span class="h-unit">人の部員が</span><span class="h-line">あなたの推しを<br>待っています</span></div>`}
+      ${IMG.group? `<a href="${IMG.group}" data-groupzoom="1"><img class="group" src="${IMG.group}" alt="いしけん！主要メンバーの集合絵"></a>`:`<div class="h-copy"><span class="h-count" data-count="369">0</span><span class="h-unit">人の部員が</span><span class="h-line">あなたの推しを<br>待っています</span></div>`}
     </div>
   </section>
+  <p class="h-hint">✦ 小さな顔をタップすると、その子に会えます ✦</p>
   ${IMG.group? `<p class="h-sub"><b data-count="369">369</b>人の部員が、あなたの推しを待っています</p>`:""}
   <div class="h-cta"><a class="btn pri" href="#/quiz">3分で推し診断 ›</a><a class="btn" href="#/girls">369人を見る</a></div>
   <section class="card today" aria-label="今日の誕生日の子">
@@ -442,6 +444,72 @@ function route(){
   route.keep = false;
 }
 function rerender(){ const y = scrollY; route.keep = true; route(); scrollTo(0,y); }
+
+/* ---------- 顔のアップ(ライトボックス) ---------- */
+let LB = null;
+function faceSrc(n){ const v = IMG[n]||{}; return v.bust || v.main || ""; }
+function lbHtml(n){
+  const c = BY.get(n); const src = faceSrc(n);
+  return `<div class="lb-pic">${src?`<img src="${src}" alt="${esc(c.name)}">`:`<div class="ph"><b>${esc(c.name[0])}</b></div>`}</div>
+    <div class="lb-tx"><span class="lb-no">No.${n}</span><h3>${esc(c.name)}</h3><p class="lb-st"><span class="dot" style="background:${colorOf(c)}"></span>${esc(c.stone)}　${esc(c.date||"")}生まれ</p>
+    <a class="btn pri" href="#/girl/${n}">この子のページへ ›</a></div>`;
+}
+function openFace(n, fromEl){
+  closeFace(true);
+  const box = document.createElement("div");
+  box.className = "lb"; box.setAttribute("role","dialog"); box.setAttribute("aria-modal","true");
+  box.innerHTML = `<div class="lb-bg"></div><div class="lb-card"><button class="lb-x" aria-label="閉じる">×</button><div class="lb-body">${lbHtml(n)}</div>
+    <button class="lb-nav lb-prev" aria-label="前の子">‹</button><button class="lb-nav lb-next" aria-label="次の子">›</button><p class="lb-swipe">左右にスワイプで次の子へ</p></div>`;
+  document.body.appendChild(box); document.body.classList.add("lb-open");
+  LB = {n, box};
+  const pic = box.querySelector(".lb-pic");
+  if(fromEl && pic.animate){
+    const a = fromEl.getBoundingClientRect(), b = pic.getBoundingClientRect();
+    const sx = a.width/b.width, dx = a.left + a.width/2 - (b.left + b.width/2), dy = a.top + a.height/2 - (b.top + b.height/2);
+    pic.animate([{transform:`translate(${dx}px,${dy}px) scale(${sx})`, borderRadius:"50%"},{transform:"none", borderRadius:"28px"}],{duration:520, easing:"cubic-bezier(.2,.9,.25,1.15)"});
+    box.querySelector(".lb-tx").animate([{opacity:0, transform:"translateY(14px)"},{opacity:1, transform:"none"}],{duration:420, delay:220, fill:"backwards", easing:"ease-out"});
+  }
+  box.querySelector(".lb-bg").animate?.([{opacity:0},{opacity:1}],{duration:300});
+  box.querySelector(".lb-x").focus({preventScroll:true});
+  let x0 = null;
+  const card = box.querySelector(".lb-card");
+  card.addEventListener("pointerdown", e=>{ x0 = e.clientX; });
+  card.addEventListener("pointerup", e=>{ if(x0===null) return; const dx = e.clientX - x0; x0 = null; if(Math.abs(dx) > 50) stepFace(dx < 0 ? 1 : -1); });
+}
+function stepFace(k){
+  if(!LB) return;
+  const n = ((LB.n - 1 + k + 369) % 369) + 1;
+  LB.n = n;
+  const body = LB.box.querySelector(".lb-body");
+  body.innerHTML = lbHtml(n);
+  body.animate?.([{opacity:0, transform:`translateX(${k*40}px)`},{opacity:1, transform:"none"}],{duration:300, easing:"ease-out"});
+}
+function closeFace(now){
+  if(!LB) return;
+  const box = LB.box; LB = null; document.body.classList.remove("lb-open");
+  if(now || !box.animate){ box.remove(); return; }
+  box.animate([{opacity:1},{opacity:0}],{duration:200}).onfinish = ()=>box.remove();
+}
+document.addEventListener("click", e=>{
+  const h = e.target.closest(".hit"); if(h){ e.preventDefault(); openFace(+h.dataset.face, h); return; }
+  const g = e.target.closest("[data-groupzoom]"); if(g){ e.preventDefault(); openGroup(g); return; }
+  if(!LB) return;
+  if(e.target.closest(".lb-x") || e.target.classList.contains("lb-bg")){ closeFace(); return; }
+  if(e.target.closest(".lb-prev")){ stepFace(-1); return; }
+  if(e.target.closest(".lb-next")){ stepFace(1); return; }
+  if(e.target.closest(".lb a")) closeFace(true);
+}, true);
+function openGroup(el){
+  closeFace(true);
+  const box = document.createElement("div"); box.className = "lb lb-group";
+  box.innerHTML = `<div class="lb-bg"></div><div class="lb-card"><button class="lb-x" aria-label="閉じる">×</button><div class="lb-pic"><img src="${IMG.group}" alt="いしけん！主要メンバーの集合絵"></div></div>`;
+  document.body.appendChild(box); document.body.classList.add("lb-open"); LB = {n:0, box};
+  const pic = box.querySelector(".lb-pic");
+  if(pic.animate){ const a = el.getBoundingClientRect(), b = pic.getBoundingClientRect();
+    pic.animate([{transform:`translate(${a.left+a.width/2-(b.left+b.width/2)}px,${a.top+a.height/2-(b.top+b.height/2)}px) scale(${a.width/b.width})`, borderRadius:"50%"},{transform:"none", borderRadius:"24px"}],{duration:520, easing:"cubic-bezier(.2,.9,.25,1.1)"}); }
+}
+document.addEventListener("keydown", e=>{ if(!LB) return; if(e.key==="Escape") closeFace(); if(e.key==="ArrowRight") stepFace(1); if(e.key==="ArrowLeft") stepFace(-1); });
+window.addEventListener("hashchange", ()=>closeFace(true));
 
 /* ---------- 操作 ---------- */
 async function share(text){

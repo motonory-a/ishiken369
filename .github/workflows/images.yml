@@ -15,6 +15,7 @@ jobs:
       - run: pip install pillow "opencv-python-headless<5" numpy
       - run: python tools/fetch_images.py
       - run: python tools/make_bust.py
+      - run: python tools/make_mosaic.py
       - name: 変わったものを保存
         run: |
           git config user.name "ishiken-bot"
