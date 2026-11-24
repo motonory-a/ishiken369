@@ -150,7 +150,7 @@ function vHome(){
       ${IMG.group? `<a href="${IMG.group}" target="_blank" rel="noopener"><img class="group" src="${IMG.group}" alt="いしけん！主要メンバーの集合絵"></a>`:`<div class="h-copy"><span class="h-count" data-count="369">0</span><span class="h-unit">人の部員が</span><span class="h-line">あなたの推しを<br>待っています</span></div>`}
     </div>
   </section>
-  ${IMG.group? `<p class="h-sub"><b data-count="369">0</b>人の部員が、あなたの推しを待っています</p>`:""}
+  ${IMG.group? `<p class="h-sub"><b data-count="369">369</b>人の部員が、あなたの推しを待っています</p>`:""}
   <div class="h-cta"><a class="btn pri" href="#/quiz">3分で推し診断 ›</a><a class="btn" href="#/girls">369人を見る</a></div>
   <section class="card today" aria-label="今日の誕生日の子">
     <div class="today-in">
