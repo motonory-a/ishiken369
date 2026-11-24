@@ -1037,7 +1037,7 @@
 },
 {
 "name": "4コマ_008_ほんとのすがた.png",
-"id": "1gE1-QKglXgLkxPCg_CxxxI9vQm7ttEHP",
+"id": "1wLDz58Q4aHDL2geYx6Slv5ZwC2yCVqru",
 "path": "01"
 },
 {
@@ -2052,6 +2052,11 @@
 {
 "name": "006_ルリ_三面図.png",
 "id": "1rO4ufiMLUVB0LNSRjPeRntMiZaALLkg5",
+"path": "03"
+},
+{
+"name": "006_ルリ_場面1.png",
+"id": "1GcqCuswXrFn71YAGd7u8weDQu3aRt3Sp",
 "path": "03"
 },
 {
@@ -3772,6 +3777,11 @@
 {
 "name": "121_スギナ_表情.png",
 "id": "1_9E5XUVg9_HYzKaoyLvo4RNcrYTCcLW3",
+"path": "03"
+},
+{
+"name": "122_セラ_三面図.png",
+"id": "13gCjH1ZPgfeq7DaWpo6vcj8AIeGQj7Ug",
 "path": "03"
 },
 {
