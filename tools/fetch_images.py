@@ -62,6 +62,13 @@ def main():
         m = re.match(r"(\d{3})", it["name"]) or re.search(r"(?:No\.?|_)(\d{3})", it["name"])
         if not m: continue
         n = int(m.group(1)); safe = re.sub(r"[^\w.-]", "_", it["id"])
+        if "場面" in it["name"]:
+            # 見せる用の1枚絵(設定画をもとに描き下ろし)
+            os.makedirs("img/scene", exist_ok=True)
+            out = f"img/scene/{n}_{safe}.webp"
+            if save(it["id"], out, 900):
+                images.setdefault(n, {})["scene"] = out
+            continue
         out = f"img/sheet/{n}_{safe}.webp"
         if save(it["id"], out, 1100):
             images.setdefault(n, {}).setdefault("sheets", []).append(out)
