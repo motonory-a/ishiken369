@@ -256,7 +256,7 @@ main{max-width:520px;margin:0 auto;padding:0 14px 24px;outline:none}
 .share-card b{font-family:var(--head);color:var(--navy)}
 /* 369人のヒーロー */
 .hero369{position:relative;margin:4px -14px 0;aspect-ratio:1;overflow:hidden;background:radial-gradient(circle at 50% 50%,#fff 0,#f4ecff 45%,#e6d9ff 100%)}
-.mosaic{position:absolute;inset:-2%;animation:mos-in 1.6s cubic-bezier(.2,.8,.2,1) both, mos-spin 240s linear 1.6s infinite}
+.mosaic{position:absolute;inset:-2%;animation:mos-in 1.6s cubic-bezier(.2,.8,.2,1) both;cursor:zoom-in}
 .mosaic img{width:100%;height:100%}
 @keyframes mos-in{from{transform:scale(1.6) rotate(-25deg);opacity:0;filter:blur(6px)}to{transform:scale(1) rotate(0);opacity:1;filter:none}}
 @keyframes mos-spin{to{transform:rotate(360deg)}}
@@ -285,22 +285,6 @@ body{background:
   radial-gradient(800px 600px at 50% 110%,#ffe6f1 0,transparent 60%),
   radial-gradient(circle at 12px 12px,rgba(255,170,205,.22) 2px,transparent 2.5px) 0 0/28px 28px,
   #fff8fb}
-/* 花びら */
-.petals{position:fixed;inset:0;pointer-events:none;z-index:25;overflow:hidden}
-.petals i{position:absolute;top:-30px;width:12px;height:10px;background:linear-gradient(135deg,#ffd3e3,#ff9ec4);border-radius:12px 0 12px 0;opacity:.85;animation:petal 11s linear infinite}
-.petals i:nth-child(1){left:6%;animation-delay:0s;animation-duration:12s}
-.petals i:nth-child(2){left:18%;animation-delay:3s;transform:scale(.8)}
-.petals i:nth-child(3){left:29%;animation-delay:6s;animation-duration:14s}
-.petals i:nth-child(4){left:41%;animation-delay:1.5s}
-.petals i:nth-child(5){left:52%;animation-delay:8s;animation-duration:13s}
-.petals i:nth-child(6){left:63%;animation-delay:4.5s}
-.petals i:nth-child(7){left:74%;animation-delay:10s;animation-duration:15s}
-.petals i:nth-child(8){left:85%;animation-delay:2s}
-.petals i:nth-child(9){left:94%;animation-delay:7s;animation-duration:12s}
-.petals i:nth-child(10){left:35%;animation-delay:12s;background:linear-gradient(135deg,#efe2ff,#c9aef7)}
-.petals i:nth-child(11){left:70%;animation-delay:14s;background:linear-gradient(135deg,#efe2ff,#c9aef7)}
-.petals i:nth-child(12){left:12%;animation-delay:16s;background:linear-gradient(135deg,#fff3d6,#f0d08e)}
-@keyframes petal{0%{transform:translate(0,0) rotate(0)}25%{transform:translate(30px,25vh) rotate(120deg)}50%{transform:translate(-20px,50vh) rotate(220deg)}75%{transform:translate(25px,75vh) rotate(320deg)}100%{transform:translate(-10px,105vh) rotate(420deg);opacity:.2}}
 /* ヘッダー */
 .hd{background:linear-gradient(180deg,rgba(255,248,251,.97),rgba(255,248,251,.85));border-bottom:1px solid rgba(255,170,205,.35)}
 .hd::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:6px;background:radial-gradient(circle at 6px 0,rgba(255,170,205,.45) 5px,transparent 5.5px) 0 0/12px 6px}
@@ -371,5 +355,32 @@ body{background:
 body.lb-open{overflow:hidden}
 body.lb-open .mosaic{animation-play-state:paused}
 @media (prefers-reduced-motion:reduce){.petals,.sparkles{display:none}.btn.pri::after,.h-center.has-group::after,.logo-txt b{animation:none}}
-.hero369{-webkit-mask:radial-gradient(circle at 50% 50%,#000 62%,transparent 72%);mask:radial-gradient(circle at 50% 50%,#000 62%,transparent 72%)}
+.mosaic{-webkit-mask:radial-gradient(circle at 50% 50%,#000 60%,transparent 70%);mask:radial-gradient(circle at 50% 50%,#000 60%,transparent 70%)}
 .h-sub{font-size:12.5px;padding:6px 18px}.h-sub b{font-size:19px}
+
+/* 虫めがね */
+.lens{position:absolute;z-index:6;width:176px;transform:translate(-50%,-50%);touch-action:none;user-select:none;-webkit-user-select:none}
+.lens-glass{position:relative;width:176px;height:176px;border-radius:50%;background:#fbf4ff url(img/mosaic.webp) no-repeat;box-shadow:0 0 0 4px #fff,0 0 0 7px #f2cf86,0 0 0 9px #fff,0 0 0 11px #ffb3cf,0 14px 30px rgba(120,60,150,.4);overflow:hidden;cursor:grab}
+.lens-glass::after{content:"";position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle at 30% 25%,rgba(255,255,255,.55),transparent 35%);pointer-events:none}
+.lens-faces{position:absolute;inset:0}
+.lens-face{position:absolute;transform:translate(-50%,-50%);border-radius:50%;border:0;padding:0;background:transparent;-webkit-tap-highlight-color:transparent}
+.lens-face.on{box-shadow:0 0 0 3px #fff,0 0 0 6px #ff8fb8,0 0 16px 4px rgba(255,143,184,.8)}
+.lens-name{position:absolute;left:50%;top:calc(100% + 10px);transform:translateX(-50%);white-space:nowrap;background:linear-gradient(90deg,#ff8fb8,#c08af0);color:#fff;border-radius:999px;padding:5px 14px;font-size:12px;font-family:var(--head);box-shadow:0 4px 12px rgba(255,120,170,.35)}
+.lens-name b{font-size:15px;margin-right:6px}
+.lens-name span{margin-left:8px;opacity:.9;font-size:11px}
+.lens-x{position:absolute;top:-6px;right:-6px;width:32px;height:32px;border-radius:50%;border:0;background:#fff;color:#c05c8c;font-size:20px;line-height:1;box-shadow:0 3px 10px rgba(90,50,140,.3)}
+
+/* 画面のキラキラ(動かない、瞬くだけ) */
+.glitter{position:fixed;inset:0;pointer-events:none;z-index:2}
+.glitter i{position:absolute;width:12px;height:12px;background:#fff;clip-path:polygon(50% 0,60% 40%,100% 50%,60% 60%,50% 100%,40% 60%,0 50%,40% 40%);filter:drop-shadow(0 0 3px #ffc4dc) drop-shadow(0 0 2px #f6d27c);animation:twinkle 3.2s ease-in-out infinite}
+.glitter i:nth-child(1){left:4%;top:18%;animation-delay:0.0s}
+.glitter i:nth-child(2){left:94%;top:24%;animation-delay:0.4s}
+.glitter i:nth-child(3){left:3%;top:48%;animation-delay:0.7s}
+.glitter i:nth-child(4){left:96%;top:58%;animation-delay:1.1s}
+.glitter i:nth-child(5){left:6%;top:82%;animation-delay:1.5s}
+.glitter i:nth-child(6){left:92%;top:88%;animation-delay:1.9s}
+.glitter i:nth-child(7){left:20%;top:96%;animation-delay:2.2s}
+.glitter i:nth-child(8){left:78%;top:8%;animation-delay:2.6s}
+.glitter i:nth-child(9){left:50%;top:99%;animation-delay:3.0s}
+.glitter i:nth-child(10){left:88%;top:40%;animation-delay:3.3s}
+@media (prefers-reduced-motion:reduce){.glitter{display:none}}

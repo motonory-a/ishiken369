@@ -146,12 +146,12 @@ function vHome(){
   return `
   <section class="hero369" aria-label="369人の部員">
     <div class="sparkles" aria-hidden="true">${"<i></i>".repeat(14)}</div>
-    <div class="mosaic"><img src="img/mosaic.webp" alt="いしけん！の部員369人" width="1400" height="1400"><div class="hits" style="--d:${(window.MOSAIC||{}).d||4.5}%">${((window.MOSAIC||{}).p||[]).map(([n,x,y])=>`<button class="hit" data-face="${n}" style="left:${x}%;top:${y}%" aria-label="${esc((BY.get(n)||{}).name||"")}"></button>`).join("")}</div></div>
+    <div class="mosaic"><img src="img/mosaic.webp" alt="いしけん！の部員369人" width="1400" height="1400"></div></div>
     <div class="h-center${IMG.group?" has-group":""}">
       ${IMG.group? `<a href="${IMG.group}" data-groupzoom="1"><img class="group" src="${IMG.group}" alt="いしけん！主要メンバーの集合絵"></a>`:`<div class="h-copy"><span class="h-count" data-count="369">0</span><span class="h-unit">人の部員が</span><span class="h-line">あなたの推しを<br>待っています</span></div>`}
     </div>
   </section>
-  <p class="h-hint">✦ 小さな顔をタップすると、その子に会えます ✦</p>
+  <p class="h-hint">✦ 輪にさわると虫めがね。動かして気になる子をタップ ✦</p>
   ${IMG.group? `<p class="h-sub"><b data-count="369">369</b>人の部員が、あなたの推しを待っています</p>`:""}
   <div class="h-cta"><a class="btn pri" href="#/quiz">3分で推し診断 ›</a><a class="btn" href="#/girls">369人を見る</a></div>
   <section class="card today" aria-label="今日の誕生日の子">
@@ -491,7 +491,6 @@ function closeFace(now){
   box.animate([{opacity:1},{opacity:0}],{duration:200}).onfinish = ()=>box.remove();
 }
 document.addEventListener("click", e=>{
-  const h = e.target.closest(".hit"); if(h){ e.preventDefault(); openFace(+h.dataset.face, h); return; }
   const g = e.target.closest("[data-groupzoom]"); if(g){ e.preventDefault(); openGroup(g); return; }
   if(!LB) return;
   if(e.target.closest(".lb-x") || e.target.classList.contains("lb-bg")){ closeFace(); return; }
@@ -510,6 +509,92 @@ function openGroup(el){
 }
 document.addEventListener("keydown", e=>{ if(!LB) return; if(e.key==="Escape") closeFace(); if(e.key==="ArrowRight") stepFace(1); if(e.key==="ArrowLeft") stepFace(-1); });
 window.addEventListener("hashchange", ()=>closeFace(true));
+
+/* ---------- 虫めがね ---------- */
+const LZ = 3.4, LS_ = 176;
+let LP = null;
+function lensFaces(cx, cy, m){
+  const M = window.MOSAIC; if(!M) return [];
+  const r = LS_/2/LZ + m.width*M.d/200;
+  return M.p.map(([n,x,y])=>({n, fx:m.left + x/100*m.width, fy:m.top + y/100*m.height}))
+    .filter(f=>Math.hypot(f.fx-cx, f.fy-cy) < r);
+}
+function drawLens(){
+  if(!LP) return;
+  const hero = document.querySelector(".hero369"), mo = hero && hero.querySelector(".mosaic img");
+  if(!mo){ LP = null; return; }
+  const m = mo.getBoundingClientRect(), h = hero.getBoundingClientRect();
+  LP.cx = Math.min(h.right-10, Math.max(h.left+10, LP.cx)); LP.cy = Math.min(h.bottom-10, Math.max(h.top+10, LP.cy));
+  const {cx, cy, el} = LP;
+  // 虫めがねは指より少し上に浮かせる(指で隠れないように)
+  const lx = Math.min(h.width - LS_/2 - 4, Math.max(LS_/2 + 4, cx - h.left));
+  const ly = Math.max(LS_/2 + 4, cy - h.top - (LP.touch ? LS_*0.62 : 0));
+  el.style.left = lx + "px"; el.style.top = ly + "px";
+  const glass = el.querySelector(".lens-glass");
+  glass.style.backgroundSize = (m.width*LZ) + "px " + (m.height*LZ) + "px";
+  glass.style.backgroundPosition = (-(cx - m.left)*LZ + LS_/2) + "px " + (-(cy - m.top)*LZ + LS_/2) + "px";
+  const fs = lensFaces(cx, cy, m);
+  const d = m.width*(window.MOSAIC.d/100)*LZ;
+  let best = null, bd = 1e9;
+  glass.querySelector(".lens-faces").innerHTML = fs.map(f=>{
+    const x = LS_/2 + (f.fx - cx)*LZ, y = LS_/2 + (f.fy - cy)*LZ, dd = Math.hypot(f.fx-cx, f.fy-cy);
+    if(dd < bd){ bd = dd; best = f.n; }
+    return `<button class="lens-face" data-lface="${f.n}" style="left:${x}px;top:${y}px;width:${d}px;height:${d}px" aria-label="${esc(BY.get(f.n).name)}"></button>`;
+  }).join("");
+  glass.querySelectorAll(".lens-face").forEach(b=>b.classList.toggle("on", +b.dataset.lface===best));
+  const c = best && BY.get(best);
+  el.querySelector(".lens-name").innerHTML = c ? `<b>${esc(c.name)}</b>${esc(c.stone)}<span>タップで会う</span>` : "動かして探してね";
+  LP.best = best;
+  const nm = el.querySelector(".lens-name"); nm.style.marginLeft = "0px";
+  const r = nm.getBoundingClientRect();
+  const shift = r.left < h.left + 6 ? (h.left + 6 - r.left) : (r.right > h.right - 6 ? (h.right - 6 - r.right) : 0);
+  nm.style.marginLeft = shift + "px";
+}
+function openLens(cx, cy, touch){
+  const hero = document.querySelector(".hero369"); if(!hero) return;
+  if(!LP){
+    const el = document.createElement("div"); el.className = "lens";
+    el.innerHTML = `<div class="lens-glass"><div class="lens-faces"></div></div><div class="lens-name"></div><button class="lens-x" aria-label="虫めがねを閉じる">×</button>`;
+    hero.appendChild(el);
+    LP = {el};
+    el.animate?.([{transform:"translate(-50%,-50%) scale(.2)", opacity:0},{transform:"translate(-50%,-50%) scale(1)", opacity:1}],{duration:280, easing:"cubic-bezier(.2,.9,.3,1.3)"});
+    bindLens(el);
+  }
+  Object.assign(LP, {cx, cy, touch});
+  drawLens();
+  setTimeout(drawLens, 320);
+}
+function closeLens(){ if(!LP) return; const el = LP.el; LP = null; el.animate ? (el.animate([{opacity:1},{opacity:0, transform:"translate(-50%,-50%) scale(.6)"}],{duration:160}).onfinish=()=>el.remove()) : el.remove(); }
+function bindLens(el){
+  let st = null;
+  el.addEventListener("pointerdown", e=>{
+    if(e.target.closest(".lens-x")) return;
+    e.preventDefault(); el.setPointerCapture(e.pointerId);
+    st = {x:e.clientX, y:e.clientY, cx:LP.cx, cy:LP.cy, moved:false, t:e.target};
+  });
+  el.addEventListener("pointermove", e=>{
+    if(!st || !LP) return;
+    const dx = e.clientX - st.x, dy = e.clientY - st.y;
+    if(Math.hypot(dx,dy) > 6) st.moved = true;
+    if(st.moved){ LP.cx = st.cx + dx/LZ*1.6; LP.cy = st.cy + dy/LZ*1.6; drawLens(); }
+  });
+  el.addEventListener("pointerup", e=>{
+    if(!st || !LP) return;
+    const s0 = st; st = null;
+    if(s0.moved) return;
+    const f = document.elementFromPoint(e.clientX, e.clientY)?.closest(".lens-face");
+    const n = f ? +f.dataset.lface : (e.target.closest(".lens-name") ? LP.best : 0);
+    if(n) openFace(n, f || el.querySelector(".lens-glass"));
+  });
+  el.querySelector(".lens-x").addEventListener("click", e=>{ e.stopPropagation(); closeLens(); });
+}
+document.addEventListener("click", e=>{
+  const hero = e.target.closest(".hero369");
+  if(!hero || e.target.closest(".h-center") || e.target.closest(".lens")) return;
+  openLens(e.clientX, e.clientY, false);
+});
+window.addEventListener("hashchange", closeLens);
+window.addEventListener("resize", ()=>LP && drawLens());
 
 /* ---------- 操作 ---------- */
 async function share(text){
