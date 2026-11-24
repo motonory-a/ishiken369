@@ -144,6 +144,13 @@ function vHome(){
              : `<a class="empty" href="#/girls"><span class="rank">${i+1}位</span><div class="pic"><div class="ph"><b>＋</b></div></div>さがす</a>`;
   }
   return `
+  <section class="hero369" aria-label="369人の部員">
+    <div class="mosaic"><img src="img/mosaic.webp" alt="いしけん！の部員369人" width="1200" height="1200"></div>
+    <div class="h-center">
+      ${IMG.group? `<img class="group" src="${IMG.group}" alt="いしけん！主要メンバーの集合絵">`:`<div class="h-copy"><span class="h-count" data-count="369">0</span><span class="h-unit">人の部員が</span><span class="h-line">あなたの推しを<br>待っています</span></div>`}
+    </div>
+  </section>
+  <div class="h-cta"><a class="btn pri" href="#/quiz">3分で推し診断 ›</a><a class="btn" href="#/girls">369人を見る</a></div>
   <section class="card today" aria-label="今日の誕生日の子">
     <div class="today-in">
       <a href="#/girl/${c.n}">${pic(c)}</a>
@@ -423,6 +430,7 @@ function route(){
     default: html = vNotFound();
   }
   app.innerHTML = html;
+  if(!p){ const el=document.querySelector('[data-count]'); if(el){ const to=+el.dataset.count, t0=performance.now(); const step=t=>{ const k=Math.min(1,(t-t0)/1400); el.textContent=Math.round(to*(1-Math.pow(1-k,3))); if(k<1) requestAnimationFrame(step); }; requestAnimationFrame(step); } }
   if(p==="girls") renderList();
   if(p==="stones") renderStones();
   document.querySelectorAll(".tabs a").forEach(x=>x.classList.toggle("on", x.dataset.tab===tab));
