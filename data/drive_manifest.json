@@ -1091,6 +1091,11 @@
 "path": "01"
 },
 {
+"name": "4コマ_019_てぶくろ.png",
+"id": "1SI0c_j-ndhCm3Aeprbi8FQpbTlSCe6C_",
+"path": "01"
+},
+{
 "name": "集合絵_トップ用.png",
 "id": "1yVqkr1OVi5atwXwuxSoleOC_c59Mq2l3",
 "path": "01"
@@ -2265,6 +2270,11 @@
 "path": "03"
 },
 {
+"name": "011_ミルカ_場面3.png",
+"id": "1S_IMShIlHkw99bCbeMzYbqCLe_h3gx3b",
+"path": "03"
+},
+{
 "name": "011_ミルカ_表情.png",
 "id": "1nEqmi7UUJbGINUacQkUkslChpKEttLwz",
 "path": "03"
@@ -2277,6 +2287,11 @@
 {
 "name": "012_ラヴィ_三面図.png",
 "id": "1erTe9jpvvqt4SjZ3ROy_fN_0pX7AxNqr",
+"path": "03"
+},
+{
+"name": "012_ラヴィ_場面1.png",
+"id": "1o0A9PBzzLWEjk4D1iGomNdwXHq-PddH_",
 "path": "03"
 },
 {
@@ -3982,6 +3997,11 @@
 {
 "name": "126_アパティ_表情.png",
 "id": "1QXAtlLnirwW14CaV5i5OqyVRcox2FyA7",
+"path": "03"
+},
+{
+"name": "127_フロラ_三面図.png",
+"id": "1O1rSpvggTUB4dMZbzYjsKOGHir9xtR-S",
 "path": "03"
 },
 {
