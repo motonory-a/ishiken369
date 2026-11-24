@@ -124,8 +124,7 @@ function addOhayo(){
 }
 
 function lineCard(){
-  return `<section class="card line-card"><span class="line-ic">LINE</span><div><b>運営・アッキーの公式LINE</b><br><span class="muted">押すとLINEが開きます。送信ボタンを押すだけで、いしけん！の案内が届きます。</span>
-    <div class="row-btns" style="margin-top:8px"><a class="btn line" href="${lineHello()}" target="_blank" rel="noopener">LINEで案内を受け取る ›</a><a class="btn sm" href="${LINE_ADD}" target="_blank" rel="noopener">友だち追加だけする</a></div></div></section>`;
+  return `<p class="line-soft">いしけん！の新しいお知らせは、運営の<a href="${LINE_ADD}" target="_blank" rel="noopener">公式LINE</a>でもお届けしています。</p>`;
 }
 function shareCard(){
   return `<section class="card pad share-card"><b>このサイトを友だちに紹介する</b><p class="muted" style="margin:2px 0 8px">推しがかぶるか、くらべてみよう。</p>
@@ -355,7 +354,6 @@ function vQuizResult(){
   </div>
   <section class="card shop" style="margin-top:14px">${bracelet(r.map(colorOf))}
     <div class="shop-tx"><h3>この3人の石で<br>ブレスレットを作る</h3><p class="muted" style="margin:0 0 8px">${r.map(c=>esc(c.stone)).join("・")}</p>${lineBtns(r.map(c=>c.stone), "診断で合った子："+r.map(c=>c.name).join("・"), "LINEで相談する")}</div></section>
-  ${lineCard()}
   <p class="center"><button class="btn sm" id="qshare">結果をシェア</button></p>
   ${shareCard()}`;
 }
@@ -384,7 +382,6 @@ function vOshi(){
   </section>
   <section class="card shop">${bracelet(pick.length?pick.map(n=>colorOf(BY.get(n))):["#c9b2ff"])}
     <div class="shop-tx"><h3>選んだ${pick.length}人の石でつくる<br>ブレスレット案</h3><p class="muted" style="margin:0 0 8px">${pick.map(n=>esc(BY.get(n).stone)).join("・")||"3人まで選んでね"}</p>${pick.length? lineBtns(pick.map(n=>BY.get(n).stone), "選んだ推し："+pick.map(n=>BY.get(n).name).join("・"), "このブレスレットをLINEで注文"):""}</div></section>
-  ${lineCard()}
   <p class="center"><button class="btn" id="oshare">ベスト5をシェア</button></p>
   ${shareCard()}`
   : `<p class="center">まだ推しがいません。<br>3つの入口から見つけてみよう！</p><div class="row-btns" style="justify-content:center"><a class="btn" href="#/girls">女の子から</a><a class="btn" href="#/stones">石から</a><a class="btn" href="#/quiz">質問から</a></div>`}`;
