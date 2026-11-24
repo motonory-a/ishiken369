@@ -1121,6 +1121,11 @@
 "path": "01"
 },
 {
+"name": "4コマ_025_おかえり.png",
+"id": "1E8ckxx-UkYwweT-NAx98FFi5k1hz1sRu",
+"path": "01"
+},
+{
 "name": "集合絵_トップ用.png",
 "id": "1yVqkr1OVi5atwXwuxSoleOC_c59Mq2l3",
 "path": "01"
@@ -2385,6 +2390,11 @@
 "path": "03"
 },
 {
+"name": "014_ファナ_場面3.png",
+"id": "1a4a7-5i3WH_dL3GZnqcgP76LttFJzvDS",
+"path": "03"
+},
+{
 "name": "014_ファナ_表情.png",
 "id": "18yte0Sgz8MzCmcmS4gbnv4iI1TBDr7_B",
 "path": "03"
@@ -2397,6 +2407,11 @@
 {
 "name": "015_ガーディ_三面図.png",
 "id": "1ZTbOYR2tDGYZ39b9fmNDooU8OaVK_8x0",
+"path": "03"
+},
+{
+"name": "015_ガーディ_場面1.png",
+"id": "1hqusE0TgUj_oZzU5aE0J1agK_h0CxSLD",
 "path": "03"
 },
 {
@@ -4102,6 +4117,16 @@
 {
 "name": "129_ペリナ_表情.png",
 "id": "1A8t2RSxPQHbePbgoLe4beCefHt7Z-3XE",
+"path": "03"
+},
+{
+"name": "130_アイラ_三面図.png",
+"id": "1Y8feiS1oDhE4CKvRZo1a8rZFe2MUVvds",
+"path": "03"
+},
+{
+"name": "130_アイラ_表情.png",
+"id": "120saQ-SpH20jsWLU6DkFSVQEtNOeW1wp",
 "path": "03"
 },
 {
