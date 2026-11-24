@@ -1071,6 +1071,11 @@
 "path": "01"
 },
 {
+"name": "4コマ_015_のんびりのちから.png",
+"id": "19uAkdTe0yRd-mnHKjxU3YieWUr3Ogsb2",
+"path": "01"
+},
+{
 "name": "集合絵_トップ用.png",
 "id": "1yVqkr1OVi5atwXwuxSoleOC_c59Mq2l3",
 "path": "01"
@@ -2202,6 +2207,16 @@
 {
 "name": "010_クロエ_三面図.png",
 "id": "1C6ncDWE3P5lLMkMmMnuEvjYB7khVbuMM",
+"path": "03"
+},
+{
+"name": "010_クロエ_場面1.png",
+"id": "1dktFUeeYVVgIIrWuG5q18Qcri_b7HzZK",
+"path": "03"
+},
+{
+"name": "010_クロエ_場面2.png",
+"id": "1OA1jxtZ8A-V3NqCrQPiG07jAZJbC2gHd",
 "path": "03"
 },
 {
@@ -3907,6 +3922,16 @@
 {
 "name": "124_アズナ_表情.png",
 "id": "1uGWSfmI_ult2I1OFZmBfyMb7gkBPYrwP",
+"path": "03"
+},
+{
+"name": "125_ココラ_三面図.png",
+"id": "1qa4SOCBPJZBCBsQIZn6Xt0LMJULwBKQ4",
+"path": "03"
+},
+{
+"name": "125_ココラ_表情.png",
+"id": "16c1KE4ZAzuw4ERjflVznOqGaHq-QH3M3",
 "path": "03"
 },
 {
