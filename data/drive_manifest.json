@@ -1001,6 +1001,11 @@
 "path": "01"
 },
 {
+"name": "4コマ_001_みがきすぎ.png",
+"id": "1vDc74dGs2G3RTHV47UVDGQUxlgI_EUT3",
+"path": "01"
+},
+{
 "name": "集合絵_トップ用.png",
 "id": "1yVqkr1OVi5atwXwuxSoleOC_c59Mq2l3",
 "path": "01"
@@ -1922,6 +1927,16 @@
 {
 "name": "003_ロゼ_三面図.png",
 "id": "1sMPWK9VT8VAK-VdnKPMDV1dpLWQj8FJr",
+"path": "03"
+},
+{
+"name": "003_ロゼ_場面1.png",
+"id": "1HVMGkRi19yfdFOwM8DjIDBEK-CHjYhZp",
+"path": "03"
+},
+{
+"name": "003_ロゼ_場面2.png",
+"id": "1gyyp7hvOmx3G6D72yV7XbDsoI8F0fJin",
 "path": "03"
 },
 {
@@ -3630,6 +3645,11 @@
 "path": "03"
 },
 {
+"name": "118_ソディ_ポーズ.png",
+"id": "1Kq_if4fkP5JhmZ_wTdSwN0xXBDwn6L_w",
+"path": "03"
+},
+{
 "name": "118_ソディ_三面図.png",
 "id": "1P_OS8-OzUv-xwDdgfJ-r31sXHcy5N5c1",
 "path": "03"
@@ -3637,6 +3657,11 @@
 {
 "name": "118_ソディ_表情.png",
 "id": "1F9Jskg1FMtWZtRsqJiFHFe9DINpCvteS",
+"path": "03"
+},
+{
+"name": "119_ラリナ_三面図.png",
+"id": "1rgL7OpIfw7oDg8C3WXxWjTyosN-_5CMv",
 "path": "03"
 },
 {
