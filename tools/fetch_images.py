@@ -67,7 +67,12 @@ def main():
             images.setdefault(n, {}).setdefault("sheets", []).append(out)
     for n, v in images.items():
         if "sheets" in v: v["sheets"].sort()
-    js = "window.IMAGES=" + json.dumps({str(k): v for k, v in sorted(images.items())}, ensure_ascii=False, separators=(",", ":")) + ";"
+    out_images = {str(k): v for k, v in sorted(images.items())}
+    # トップ用の集合絵(05_キャラ画像「集合絵_トップ用.png」)。差し替えに備えて毎回取り直す
+    GROUP_ID = "13bAAR_id-mxuK9_p3fVLwkDOPr6FSIyL"
+    if os.path.exists("img/group.webp"): os.remove("img/group.webp")
+    if save(GROUP_ID, "img/group.webp", 1000): out_images["group"] = "img/group.webp"
+    js = "window.IMAGES=" + json.dumps(out_images, ensure_ascii=False, separators=(",", ":")) + ";"
     open("data/images.js", "w").write(js)
     print("メイン絵", sum(1 for v in images.values() if "main" in v), "人 / 設定画", sum(len(v.get("sheets", [])) for v in images.values()), "枚")
 
