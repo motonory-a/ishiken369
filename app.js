@@ -32,6 +32,15 @@ const store = {
   set(v){ mem = v; try{ localStorage.setItem("ishiken_oshi", JSON.stringify(v)); }catch(e){} }
 };
 let mem = [];
+let pickMem = null;
+function getPick(v){
+  let p = pickMem;
+  if(!p){ try{ p = JSON.parse(localStorage.getItem("ishiken_pick")||"null"); }catch(e){} }
+  p = Array.isArray(p) ? p.filter(n=>v.includes(n)).slice(0,3) : [];
+  if(!p.length) p = v.slice(0,3);
+  return p;
+}
+function setPick(p){ pickMem = p; try{ localStorage.setItem("ishiken_pick", JSON.stringify(p)); }catch(e){} }
 function toggleOshi(n){
   const v = store.get(); const i = v.indexOf(n);
   if(i>=0){ v.splice(i,1); store.set(v); toast(`${BY.get(n).name}を推しから外しました`); return false; }
@@ -335,6 +344,7 @@ function vQuizResult(){
 /* 推しベスト5 */
 function vOshi(){
   const v = store.get();
+  const pick = getPick(v);
   const items = v.map((n,i)=>{ const c = BY.get(n); return `
     <section class="card oshi-item${i===0?" first":""}">
       <span class="crown r${i+1}">${i+1}</span>
@@ -348,8 +358,13 @@ function vOshi(){
   <p class="center muted">📱 会員登録なしで、このスマホに保存されます</p>
   ${items}
   ${v.length<5? `<a class="add-slot" href="#/girls">＋ 推しを追加（あと${5-v.length}人）</a>`:""}
-  ${v.length? `<section class="card shop">${bracelet(cols.slice(0,3).length?cols.slice(0,3):["#c9b2ff"])}
-    <div class="shop-tx"><h3>推しベスト3の石でつくる<br>ブレスレット案</h3><p class="muted" style="margin:0 0 8px">${v.slice(0,3).map(n=>esc(BY.get(n).stone)).join("・")}</p>${lineBtns(v.slice(0,3).map(n=>BY.get(n).stone), "推しベスト3："+v.slice(0,3).map(n=>BY.get(n).name).join("・"), "このブレスレットをLINEで注文")}</div></section>
+  ${v.length? `<section class="card pad pick3">
+    <h2 class="sec-t" style="margin-top:0">ブレスレットにする3人を選ぶ</h2>
+    <p class="muted" style="margin:0 0 8px">ベスト5の中から、石を使いたい子を3人まで選んでね（はじめは1〜3位）。</p>
+    <div class="pick-row">${v.map((n,i)=>{const c=BY.get(n);const on=pick.includes(n);return `<button class="pick${on?" on":""}" data-pick="${n}" aria-pressed="${on}">${pic(c)}<span>${i+1}位 ${esc(c.name)}</span><small>${esc(c.stone)}</small></button>`;}).join("")}</div>
+  </section>
+  <section class="card shop">${bracelet(pick.length?pick.map(n=>colorOf(BY.get(n))):["#c9b2ff"])}
+    <div class="shop-tx"><h3>選んだ${pick.length}人の石でつくる<br>ブレスレット案</h3><p class="muted" style="margin:0 0 8px">${pick.map(n=>esc(BY.get(n).stone)).join("・")||"3人まで選んでね"}</p>${pick.length? lineBtns(pick.map(n=>BY.get(n).stone), "選んだ推し："+pick.map(n=>BY.get(n).name).join("・"), "このブレスレットをLINEで注文"):""}</div></section>
   ${lineCard()}
   <p class="center"><button class="btn" id="oshare">ベスト5をシェア</button></p>`
   : `<p class="center">まだ推しがいません。<br>3つの入口から見つけてみよう！</p><div class="row-btns" style="justify-content:center"><a class="btn" href="#/girls">女の子から</a><a class="btn" href="#/stones">石から</a><a class="btn" href="#/quiz">質問から</a></div>`}`;
@@ -432,6 +447,7 @@ document.addEventListener("click", e=>{
   if(t.id==="qshare"){ const r = quizRank(); share(`わたしに合ういしけん部員は ${r.map(c=>`${c.name}（${c.stone}）`).join("・")} でした！`); return; }
   if(d.up!==undefined || d.down!==undefined){ const v = store.get(); const i = +(d.up ?? d.down); const j = d.up!==undefined? i-1 : i+1; [v[i],v[j]]=[v[j],v[i]]; store.set(v); rerender(); return; }
   if(d.del){ toggleOshi(+d.del); rerender(); return; }
+  if(d.pick){ const n = +d.pick; const p = getPick(store.get()); const i = p.indexOf(n); if(i>=0) p.splice(i,1); else { if(p.length>=3){ toast("選べるのは3人までです。外したい子を先に押してね"); return; } p.push(n); } setPick(p); rerender(); return; }
   if(t.id==="ohayoAdd"){ addOhayo(); return; }
   if(t.id==="oshare"){ const v = store.get(); share(`わたしのいしけん推しベスト5：${v.map((n,i)=>`${i+1}位 ${BY.get(n).name}`).join("／")}`); return; }
   if(d.share){ const c = BY.get(+d.share); share(`いしけん！の${c.name}（${c.stone}）`); return; }
