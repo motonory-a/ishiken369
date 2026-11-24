@@ -1051,6 +1051,11 @@
 "path": "01"
 },
 {
+"name": "4コマ_011_にがおえ.png",
+"id": "1S6vr-gxO6BhyscF_hqsbhHNMb_CecGMU",
+"path": "01"
+},
+{
 "name": "集合絵_トップ用.png",
 "id": "1yVqkr1OVi5atwXwuxSoleOC_c59Mq2l3",
 "path": "01"
@@ -2105,6 +2110,11 @@
 "path": "03"
 },
 {
+"name": "007_モカ_場面3.png",
+"id": "1jgImGPtYgLmre1WDQJ_b3dX92QDlKfLn",
+"path": "03"
+},
+{
 "name": "007_モカ_表情.png",
 "id": "1J4NOCij-DTDjkenM3DblzAIq-kSP96Wx",
 "path": "03"
@@ -2117,6 +2127,11 @@
 {
 "name": "008_シトラ_三面図.png",
 "id": "1zmJeRlVEWwIyVPgdOERGgTGHptosVM_j",
+"path": "03"
+},
+{
+"name": "008_シトラ_場面1.png",
+"id": "14hvKQxhRoW7fVdItBUO2FykKVKLPJWKM",
 "path": "03"
 },
 {
@@ -3822,6 +3837,16 @@
 {
 "name": "122_セラ_表情.png",
 "id": "1-aw5mRAJHIFiTRGtZbi0Ow9Gfq0jr1BI",
+"path": "03"
+},
+{
+"name": "123_マラカ_三面図.png",
+"id": "1I2Io1-_ldD4CICZ7c0OrKoG5jRcZljne",
+"path": "03"
+},
+{
+"name": "123_マラカ_表情.png",
+"id": "1HCsRRgUVGGxmV14hyU1rNIN9qZ8EOffQ",
 "path": "03"
 },
 {
