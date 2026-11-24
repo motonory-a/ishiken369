@@ -1166,6 +1166,11 @@
 "path": "01"
 },
 {
+"name": "4コマ_034_まいご.png",
+"id": "1fqXM-N59PHaW7inpA_G_HabUWyoeQfFe",
+"path": "01"
+},
+{
 "name": "集合絵_トップ用.png",
 "id": "1yVqkr1OVi5atwXwuxSoleOC_c59Mq2l3",
 "path": "01"
@@ -2542,6 +2547,16 @@
 {
 "name": "018_ハルカ_場面1.png",
 "id": "1_O1bLLZ9b31oLbdRSFrEtgT8_CYi0zhy",
+"path": "03"
+},
+{
+"name": "018_ハルカ_場面2.png",
+"id": "1rJVY44Gpy4_cJXu0DhoF0AFI5EYTpv9m",
+"path": "03"
+},
+{
+"name": "018_ハルカ_場面3.png",
+"id": "1ptDvHQYUAZ3SmjZ9shXlc345oy9ge4GZ",
 "path": "03"
 },
 {
@@ -4247,6 +4262,16 @@
 {
 "name": "132_ジルナ_表情.png",
 "id": "1cAqXzsRk7ku_fDPpJaFIB322piudVxnS",
+"path": "03"
+},
+{
+"name": "133_スピナ_三面図.png",
+"id": "105o2LAKMMgzbkdJflohyJ2KCZa0yvGXF",
+"path": "03"
+},
+{
+"name": "133_スピナ_表情.png",
+"id": "18jRSPAjelEzzw0oOH1_v9GolVxZQiLSM",
 "path": "03"
 },
 {
