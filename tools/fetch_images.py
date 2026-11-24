@@ -78,6 +78,12 @@ def main():
         if "scenes" in v: v["scenes"].sort()
     out_images = {str(k): v for k, v in sorted(images.items())}
     # トップ用の集合絵(05_キャラ画像「集合絵_トップ用.png」)。差し替えに備えて毎回取り直す
+    # 4コマ漫画の元絵(01に置いたコピー、文字入れ前)
+    os.makedirs("img/4koma_raw", exist_ok=True)
+    for it in man.get("01", []):
+        if it["name"].startswith("4コマ_"):
+            m4 = re.match(r"4コマ_(\d{3})", it["name"])
+            if m4: save(it["id"], f"img/4koma_raw/{m4.group(1)}.webp", 1400)
     # 公開フォルダ01に置いたコピーを名前で探す(いちばん新しいもの=一覧の最後)
     gs = [it for it in man.get("01", []) if it["name"].startswith("集合絵")]
     if gs:
