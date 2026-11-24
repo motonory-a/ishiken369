@@ -251,3 +251,6 @@ main{max-width:520px;margin:0 auto;padding:0 14px 24px;outline:none}
 .pick{position:relative}
 .pick.on::before{content:"✓";position:absolute;top:4px;right:6px;width:20px;height:20px;border-radius:50%;background:#e2799f;color:#fff;font-size:12px;display:grid;place-items:center;z-index:2}
 .pick.on::after{display:none}
+.line-card{align-items:flex-start}
+.share-card{margin-top:14px}
+.share-card b{font-family:var(--head);color:var(--navy)}

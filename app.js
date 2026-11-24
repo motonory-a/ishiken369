@@ -5,7 +5,9 @@ const IMG = window.IMAGES || {};
 const BY = new Map(C.map(c=>[c.n,c]));
 const LINE_ADD = "https://lin.ee/zapyKLV";
 const LINE_ID = "@425vvwoh";
-const lineOrder = (stones, who) => `https://line.me/R/oaMessage/${encodeURIComponent(LINE_ID)}/?${encodeURIComponent(`【いしけん！ブレスレットの相談】\n${who? who+"\n":""}使いたい石：${stones.join("・")}\n手首のサイズ：\nご希望（色・予算など）：`)}`;
+const lineOrder = (stones, who) => `https://line.me/R/oaMessage/${encodeURIComponent(LINE_ID)}/?${encodeURIComponent(`【いしけん！ブレスレットの相談】\n${who? who+"\n":""}使いたい石：${stones.join("・")}\nこの石でブレスレットを作りたいです。`)}`;
+const lineHello = () => `https://line.me/R/oaMessage/${encodeURIComponent(LINE_ID)}/?${encodeURIComponent("いしけん")}`;
+const SITE = "https://motonory-a.github.io/ishiken369/";
 const lineBtns = (stones, who, label="LINEでブレスレットを相談・注文") => `<a class="btn line" href="${lineOrder(stones, who)}" target="_blank" rel="noopener">${label} ›</a>`;
 const INSTA = "https://www.instagram.com/ishiken369/";
 const app = document.getElementById("app");
@@ -122,7 +124,12 @@ function addOhayo(){
 }
 
 function lineCard(){
-  return `<a class="card line-card" href="${LINE_ADD}" target="_blank" rel="noopener"><span class="line-ic">LINE</span><span><b>運営・アッキーの公式LINE</b><br><span class="muted">友だち追加して「いしけん」と送ると、いしけん！の案内が届きます。推しの石のブレスレット相談もこちらから</span></span></a>`;
+  return `<section class="card line-card"><span class="line-ic">LINE</span><div><b>運営・アッキーの公式LINE</b><br><span class="muted">押すとLINEが開きます。送信ボタンを押すだけで、いしけん！の案内が届きます。</span>
+    <div class="row-btns" style="margin-top:8px"><a class="btn line" href="${lineHello()}" target="_blank" rel="noopener">LINEで案内を受け取る ›</a><a class="btn sm" href="${LINE_ADD}" target="_blank" rel="noopener">友だち追加だけする</a></div></div></section>`;
+}
+function shareCard(){
+  return `<section class="card pad share-card"><b>このサイトを友だちに紹介する</b><p class="muted" style="margin:2px 0 8px">推しがかぶるか、くらべてみよう。</p>
+    <div class="row-btns"><a class="btn line" href="https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(SITE)}" target="_blank" rel="noopener">LINEで送る</a><a class="btn sm" href="https://x.com/intent/post?text=${encodeURIComponent("天然石が女の子になった369人の部員から推しを探せる「いしけん！」")}&url=${encodeURIComponent(SITE)}" target="_blank" rel="noopener">Xで紹介</a><button class="btn sm" data-sharesite="1">ほかの方法・リンクをコピー</button></div></section>`;
 }
 
 /* ---------- 画面 ---------- */
@@ -162,6 +169,7 @@ function vHome(){
     <div class="ohayo-row"><label>毎朝 <input type="time" id="ohayoTime" value="${esc(ohayoTime())}" step="300"></label><button class="btn pri" id="ohayoAdd">カレンダーに入れる</button></div>
   </section>
   ${lineCard()}
+  ${shareCard()}
   <a class="card insta" href="${INSTA}" target="_blank" rel="noopener"><span class="ig"></span><span><b>毎朝7:30に「おはよう」が届く</b><br><span class="muted">Instagram @ishiken369 で部員たちの日常を配信中</span></span></a>`;
 }
 
@@ -338,7 +346,8 @@ function vQuizResult(){
   <section class="card shop" style="margin-top:14px">${bracelet(r.map(colorOf))}
     <div class="shop-tx"><h3>この3人の石で<br>ブレスレットを作る</h3><p class="muted" style="margin:0 0 8px">${r.map(c=>esc(c.stone)).join("・")}</p>${lineBtns(r.map(c=>c.stone), "診断で合った子："+r.map(c=>c.name).join("・"), "LINEで相談する")}</div></section>
   ${lineCard()}
-  <p class="center"><button class="btn sm" id="qshare">結果をシェア</button></p>`;
+  <p class="center"><button class="btn sm" id="qshare">結果をシェア</button></p>
+  ${shareCard()}`;
 }
 
 /* 推しベスト5 */
@@ -366,7 +375,8 @@ function vOshi(){
   <section class="card shop">${bracelet(pick.length?pick.map(n=>colorOf(BY.get(n))):["#c9b2ff"])}
     <div class="shop-tx"><h3>選んだ${pick.length}人の石でつくる<br>ブレスレット案</h3><p class="muted" style="margin:0 0 8px">${pick.map(n=>esc(BY.get(n).stone)).join("・")||"3人まで選んでね"}</p>${pick.length? lineBtns(pick.map(n=>BY.get(n).stone), "選んだ推し："+pick.map(n=>BY.get(n).name).join("・"), "このブレスレットをLINEで注文"):""}</div></section>
   ${lineCard()}
-  <p class="center"><button class="btn" id="oshare">ベスト5をシェア</button></p>`
+  <p class="center"><button class="btn" id="oshare">ベスト5をシェア</button></p>
+  ${shareCard()}`
   : `<p class="center">まだ推しがいません。<br>3つの入口から見つけてみよう！</p><div class="row-btns" style="justify-content:center"><a class="btn" href="#/girls">女の子から</a><a class="btn" href="#/stones">石から</a><a class="btn" href="#/quiz">質問から</a></div>`}`;
 }
 
@@ -448,6 +458,7 @@ document.addEventListener("click", e=>{
   if(d.up!==undefined || d.down!==undefined){ const v = store.get(); const i = +(d.up ?? d.down); const j = d.up!==undefined? i-1 : i+1; [v[i],v[j]]=[v[j],v[i]]; store.set(v); rerender(); return; }
   if(d.del){ toggleOshi(+d.del); rerender(); return; }
   if(d.pick){ const n = +d.pick; const p = getPick(store.get()); const i = p.indexOf(n); if(i>=0) p.splice(i,1); else { if(p.length>=3){ toast("選べるのは3人までです。外したい子を先に押してね"); return; } p.push(n); } setPick(p); rerender(); return; }
+  if(d.sharesite){ (async()=>{ const text="天然石が女の子になった369人の部員から推しを探せる「いしけん！」"; try{ if(navigator.share){ await navigator.share({title:"いしけん！〜天然石研究部〜", text, url:SITE}); return; } }catch(e){ return; } try{ await navigator.clipboard.writeText(text+"\n"+SITE); toast("リンクをコピーしました"); }catch(e){ toast(SITE); } })(); return; }
   if(t.id==="ohayoAdd"){ addOhayo(); return; }
   if(t.id==="oshare"){ const v = store.get(); share(`わたしのいしけん推しベスト5：${v.map((n,i)=>`${i+1}位 ${BY.get(n).name}`).join("／")}`); return; }
   if(d.share){ const c = BY.get(+d.share); share(`いしけん！の${c.name}（${c.stone}）`); return; }
