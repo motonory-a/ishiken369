@@ -1031,6 +1031,11 @@
 "path": "01"
 },
 {
+"name": "4コマ_007_たよれない.png",
+"id": "1omGCXLC9UFwryWBLYuZMBr2lsv3na3mg",
+"path": "01"
+},
+{
 "name": "集合絵_トップ用.png",
 "id": "1yVqkr1OVi5atwXwuxSoleOC_c59Mq2l3",
 "path": "01"
@@ -2017,6 +2022,16 @@
 {
 "name": "005_ルチカ_場面1.png",
 "id": "1sslkyGw0vyB16EeIGynx8mLq99Z7uZRN",
+"path": "03"
+},
+{
+"name": "005_ルチカ_場面2.png",
+"id": "1JtntZ8ahj6_X2HSOZTS6auNII9ibYa9Y",
+"path": "03"
+},
+{
+"name": "005_ルチカ_場面3.png",
+"id": "10s48FXlwu4xQF642QioY3up2rFtt6NxU",
 "path": "03"
 },
 {
@@ -3740,8 +3755,18 @@
 "path": "03"
 },
 {
+"name": "121_スギナ_ポーズ.png",
+"id": "1xdaBqySW49Pup4qfy23jy2GrqWn3dC8r",
+"path": "03"
+},
+{
 "name": "121_スギナ_三面図.png",
 "id": "1vnFMHX6DEEt1Jgp24c-LtApxbF0mMZ8-",
+"path": "03"
+},
+{
+"name": "121_スギナ_表情.png",
+"id": "1_9E5XUVg9_HYzKaoyLvo4RNcrYTCcLW3",
 "path": "03"
 },
 {
