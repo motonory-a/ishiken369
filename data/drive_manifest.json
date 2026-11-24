@@ -1196,6 +1196,11 @@
 "path": "01"
 },
 {
+"name": "4コマ_040_ひみつきち.png",
+"id": "1TplPQAnQvjwOsjIVfc2lNZla3nWTa5JK",
+"path": "01"
+},
+{
 "name": "集合絵_トップ用.png",
 "id": "1yVqkr1OVi5atwXwuxSoleOC_c59Mq2l3",
 "path": "01"
@@ -2632,6 +2637,16 @@
 {
 "name": "020_アカリ_場面1.png",
 "id": "1JqwbagvnzEBUkXsN-U2NW5q1FxCjMy9e",
+"path": "03"
+},
+{
+"name": "020_アカリ_場面2.png",
+"id": "16eAPlXyl_qB_oOe5qvkEBj6rqSMcJkLi",
+"path": "03"
+},
+{
+"name": "020_アカリ_場面3.png",
+"id": "1qb55Yf3dNBR2h02Er4kF54ge2lAlYJfh",
 "path": "03"
 },
 {
@@ -4325,6 +4340,11 @@
 "path": "03"
 },
 {
+"name": "134_トパナ_ポーズ.png",
+"id": "16TGKJEB8n-XGB5e_aC5EcA8K1upl9YC8",
+"path": "03"
+},
+{
 "name": "134_トパナ_三面図.png",
 "id": "1-Lk_wY6KMhbqidy6OwCfEAhskEo6th_Q",
 "path": "03"
@@ -4332,6 +4352,11 @@
 {
 "name": "134_トパナ_表情.png",
 "id": "1HCdvuRX09uwVJqBhdaE8KT-qEbIZzLk3",
+"path": "03"
+},
+{
+"name": "135_ヘマナ_三面図.png",
+"id": "1-kEZbfkOma85_RbUc6JBckJWtfnrFz6L",
 "path": "03"
 },
 {
