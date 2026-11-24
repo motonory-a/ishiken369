@@ -10,6 +10,7 @@ const lineHello = () => `https://line.me/R/oaMessage/${encodeURIComponent(LINE_I
 const SITE = "https://motonory-a.github.io/ishiken369/";
 const lineBtns = (stones, who, label="LINEでブレスレットを相談・注文") => `<a class="btn line" href="${lineOrder(stones, who)}" target="_blank" rel="noopener">${label} ›</a>`;
 const INSTA = "https://www.instagram.com/ishiken369/";
+const INSTA_ON = false; // Instagram の運用が始まったら true に
 const app = document.getElementById("app");
 
 /* ---------- 色・言い伝え ---------- */
@@ -179,7 +180,7 @@ function vHome(){
   </section>
   ${lineCard()}
   ${shareCard()}
-  <a class="card insta" href="${INSTA}" target="_blank" rel="noopener"><span class="ig"></span><span><b>毎朝7:30に「おはよう」が届く</b><br><span class="muted">Instagram @ishiken369 で部員たちの日常を配信中</span></span></a>`;
+  ${INSTA_ON?`<a class="card insta" href="${INSTA}" target="_blank" rel="noopener"><span class="ig"></span><span><b>毎朝7:30に「おはよう」が届く</b><br><span class="muted">Instagram @ishiken369 で部員たちの日常を配信中</span></span></a>`:""}`;
 }
 
 const LS = {q:"", grade:"", color:"", group:"", sort:"no", shown:40};
@@ -350,7 +351,7 @@ function vQuizResult(){
   </section>`).join("")}
   <div class="row-btns" style="justify-content:center;margin-top:6px">
     <button class="btn" id="qretry">↻ もう一度診断する</button>
-    <a class="btn pri" href="${INSTA}" target="_blank" rel="noopener">Instagramでこの子に会う ›</a>
+    ${INSTA_ON?`<a class="btn pri" href="${INSTA}" target="_blank" rel="noopener">Instagramでこの子に会う ›</a>`:""}
   </div>
   <section class="card shop" style="margin-top:14px">${bracelet(r.map(colorOf))}
     <div class="shop-tx"><h3>この3人の石で<br>ブレスレットを作る</h3><p class="muted" style="margin:0 0 8px">${r.map(c=>esc(c.stone)).join("・")}</p>${lineBtns(r.map(c=>c.stone), "診断で合った子："+r.map(c=>c.name).join("・"), "LINEで相談する")}</div></section>
