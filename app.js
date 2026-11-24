@@ -213,7 +213,7 @@ function dateNum(c){ const m=(c.date||"").match(/(\d+)月(\d+)日/); return m? +
 
 function vGirl(n){
   const c = BY.get(n); if(!c) return vNotFound();
-  const v = IMG[c.n]; const sheets = (v && typeof v==="object" && v.sheets) || [];
+  const v = IMG[c.n]; const scenes = (v && typeof v==="object" && v.scenes) || [];
   const fr = friendsOf(c);
   const on = store.get().includes(c.n);
   const prof = [["学年",c.grade],["身長",c.height],["誕生日",c.date],["部活の役割",c.role],["見た目",c.look],["小物",c.acc]].filter(x=>x[1]);
@@ -232,7 +232,7 @@ function vGirl(n){
       <button class="btn pink" data-oshi-big="${c.n}" aria-pressed="${on}">${on? "♥ 推し登録ずみ":"♡ 推しに登録"}</button>
     </div>
   </section>
-  ${sheets.length? `<h2 class="sec-t">表情集・ポーズ集</h2><div class="gallery">${sheets.map(s=>`<a class="pic" href="${esc(s)}" target="_blank" rel="noopener"><img src="${esc(s)}" alt="${esc(c.name)}の設定画" loading="lazy"></a>`).join("")}</div>`:""}
+  ${scenes.length? `<h2 class="sec-t">${esc(c.name)}のいろんな顔</h2><div class="scenes">${scenes.map(s=>`<a class="scene" href="${esc(s)}" data-scenezoom="1"><img src="${esc(s)}" alt="${esc(c.name)}のイラスト" loading="lazy"></a>`).join("")}</div>`:""}
   <h2 class="sec-t">プロフィール</h2>
   <div class="card pad"><dl class="prof">${prof.map(([k,v])=>`<dt>${k}</dt><dd>${esc(v)}</dd>`).join("")}
     ${c.pers? `<dt>性格</dt><dd>${esc(c.pers)}</dd>`:""}${c.trig? `<dt>成長のきっかけ</dt><dd>${esc(c.trig)}</dd>`:""}</dl></div>
@@ -489,16 +489,17 @@ function closeFace(now){
 }
 document.addEventListener("click", e=>{
   const g = e.target.closest("[data-groupzoom]"); if(g){ e.preventDefault(); openGroup(g); return; }
+  const sc = e.target.closest("[data-scenezoom]"); if(sc){ e.preventDefault(); openGroup(sc, sc.getAttribute("href")); return; }
   if(!LB) return;
   if(e.target.closest(".lb-x") || e.target.classList.contains("lb-bg")){ closeFace(); return; }
   if(e.target.closest(".lb-prev")){ stepFace(-1); return; }
   if(e.target.closest(".lb-next")){ stepFace(1); return; }
   if(e.target.closest(".lb a")) closeFace(true);
 }, true);
-function openGroup(el){
+function openGroup(el, src){
   closeFace(true);
   const box = document.createElement("div"); box.className = "lb lb-group";
-  box.innerHTML = `<div class="lb-bg"></div><div class="lb-card"><button class="lb-x" aria-label="閉じる">×</button><div class="lb-pic"><img src="${IMG.group}" alt="いしけん！主要メンバーの集合絵"></div></div>`;
+  box.innerHTML = `<div class="lb-bg"></div><div class="lb-card"><button class="lb-x" aria-label="閉じる">×</button><div class="lb-pic"><img src="${src||IMG.group}" alt=""></div></div>`;
   document.body.appendChild(box); document.body.classList.add("lb-open"); LB = {n:0, box};
   const pic = box.querySelector(".lb-pic");
   if(pic.animate){ const a = el.getBoundingClientRect(), b = pic.getBoundingClientRect();

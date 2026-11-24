@@ -67,13 +67,14 @@ def main():
             os.makedirs("img/scene", exist_ok=True)
             out = f"img/scene/{n}_{safe}.webp"
             if save(it["id"], out, 900):
-                images.setdefault(n, {})["scene"] = out
+                images.setdefault(n, {}).setdefault("scenes", []).append(out)
             continue
         out = f"img/sheet/{n}_{safe}.webp"
         if save(it["id"], out, 1100):
             images.setdefault(n, {}).setdefault("sheets", []).append(out)
     for n, v in images.items():
         if "sheets" in v: v["sheets"].sort()
+        if "scenes" in v: v["scenes"].sort()
     out_images = {str(k): v for k, v in sorted(images.items())}
     # トップ用の集合絵(05_キャラ画像「集合絵_トップ用.png」)。差し替えに備えて毎回取り直す
     # 公開フォルダ01に置いたコピーを名前で探す(いちばん新しいもの=一覧の最後)
