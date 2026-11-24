@@ -1096,6 +1096,11 @@
 "path": "01"
 },
 {
+"name": "4コマ_020_ひなたぼっこ.png",
+"id": "1QqVvpUCF-Yc0OMGF-ealJbMXCUJBRCI7",
+"path": "01"
+},
+{
 "name": "集合絵_トップ用.png",
 "id": "1yVqkr1OVi5atwXwuxSoleOC_c59Mq2l3",
 "path": "01"
@@ -2292,6 +2297,11 @@
 {
 "name": "012_ラヴィ_場面1.png",
 "id": "1o0A9PBzzLWEjk4D1iGomNdwXHq-PddH_",
+"path": "03"
+},
+{
+"name": "012_ラヴィ_場面2.png",
+"id": "1XKt7LcpiOjI3oVjWluEr93VseO3Pyse3",
 "path": "03"
 },
 {
@@ -4000,8 +4010,18 @@
 "path": "03"
 },
 {
+"name": "127_フロラ_ポーズ.png",
+"id": "1B-wy3WPa6ZY56lqrtJ21z1xisfck81gG",
+"path": "03"
+},
+{
 "name": "127_フロラ_三面図.png",
 "id": "1O1rSpvggTUB4dMZbzYjsKOGHir9xtR-S",
+"path": "03"
+},
+{
+"name": "127_フロラ_表情.png",
+"id": "1e2Rk7ReOb7oSClzVPVd7JxKFAZb7Nshd",
 "path": "03"
 },
 {
