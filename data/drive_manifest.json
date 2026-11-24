@@ -1126,6 +1126,11 @@
 "path": "01"
 },
 {
+"name": "4コマ_026_ねぼすけ.png",
+"id": "1qSySmTqiT2JtUBlGiN7IP8UHms4MXsOG",
+"path": "01"
+},
+{
 "name": "集合絵_トップ用.png",
 "id": "1yVqkr1OVi5atwXwuxSoleOC_c59Mq2l3",
 "path": "01"
@@ -2412,6 +2417,16 @@
 {
 "name": "015_ガーディ_場面1.png",
 "id": "1hqusE0TgUj_oZzU5aE0J1agK_h0CxSLD",
+"path": "03"
+},
+{
+"name": "015_ガーディ_場面2.png",
+"id": "1zATlR6W6ZDR_1FpiGxMB6Gdq-bV-3g95",
+"path": "03"
+},
+{
+"name": "015_ガーディ_場面3.png",
+"id": "1ExuVRJu5Qyk3ApCvnPOVT3bJPr1eGUUc",
 "path": "03"
 },
 {
@@ -4117,6 +4132,11 @@
 {
 "name": "129_ペリナ_表情.png",
 "id": "1A8t2RSxPQHbePbgoLe4beCefHt7Z-3XE",
+"path": "03"
+},
+{
+"name": "130_アイラ_ポーズ.png",
+"id": "16be61zrpegwMhR9amHkzLshO042ls0UW",
 "path": "03"
 },
 {
