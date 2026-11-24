@@ -122,7 +122,7 @@ function addOhayo(){
 }
 
 function lineCard(){
-  return `<a class="card line-card" href="${LINE_ADD}" target="_blank" rel="noopener"><span class="line-ic">LINE</span><span><b>公式LINEを友だち追加</b><br><span class="muted">新しい部員の紹介や、推しの石のブレスレット相談はこちらから</span></span></a>`;
+  return `<a class="card line-card" href="${LINE_ADD}" target="_blank" rel="noopener"><span class="line-ic">LINE</span><span><b>運営・アッキーの公式LINE</b><br><span class="muted">友だち追加して「いしけん」と送ると、いしけん！の案内が届きます。推しの石のブレスレット相談もこちらから</span></span></a>`;
 }
 
 /* ---------- 画面 ---------- */
