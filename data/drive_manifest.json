@@ -1056,6 +1056,11 @@
 "path": "01"
 },
 {
+"name": "4コマ_012_まよいみち.png",
+"id": "1b9LCQVeiQyvdcZnX8FTfLJaPuy79UZ6O",
+"path": "01"
+},
+{
 "name": "集合絵_トップ用.png",
 "id": "1yVqkr1OVi5atwXwuxSoleOC_c59Mq2l3",
 "path": "01"
@@ -2132,6 +2137,16 @@
 {
 "name": "008_シトラ_場面1.png",
 "id": "14hvKQxhRoW7fVdItBUO2FykKVKLPJWKM",
+"path": "03"
+},
+{
+"name": "008_シトラ_場面2.png",
+"id": "1pP_dTQf5cSXsr2JqdyixmADokzkp-pQM",
+"path": "03"
+},
+{
+"name": "008_シトラ_場面3.png",
+"id": "1b_ZdMx3ze2yf7kV7oz2hUswcvZ52anOP",
 "path": "03"
 },
 {
@@ -3837,6 +3852,11 @@
 {
 "name": "122_セラ_表情.png",
 "id": "1-aw5mRAJHIFiTRGtZbi0Ow9Gfq0jr1BI",
+"path": "03"
+},
+{
+"name": "123_マラカ_ポーズ.png",
+"id": "1bfz8mT6N65kfVa7QncZ7nr5ZOSm3EbZq",
 "path": "03"
 },
 {
