@@ -65,7 +65,8 @@ def main():
         if "場面" in it["name"]:
             # 見せる用の1枚絵(設定画をもとに描き下ろし)
             os.makedirs("img/scene", exist_ok=True)
-            out = f"img/scene/{n}_{safe}.webp"
+            k = re.search(r"場面(\d*)", it["name"]).group(1) or "1"
+            out = f"img/scene/{n}_{k}_{safe}.webp"
             if save(it["id"], out, 900):
                 images.setdefault(n, {}).setdefault("scenes", []).append(out)
             continue
