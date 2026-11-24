@@ -228,3 +228,13 @@ main{max-width:520px;margin:0 auto;padding:0 14px 24px;outline:none}
 .ohayo-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
 .ohayo-row label{font-family:var(--head);font-weight:700;color:var(--navy)}
 .ohayo-row input{font:inherit;font-size:16px;padding:8px 10px;border-radius:12px;border:1.2px solid rgba(157,123,230,.45);color:var(--navy);background:#fff}
+.hero2{overflow:hidden;margin-top:10px}
+.hero2-pics{display:grid;grid-template-columns:1.35fr 1fr;gap:2px;background:#fff}
+.hero2-pics .pic{height:340px}
+.hp-bust .pic img{object-fit:cover;object-position:50% 0}
+.hp-full .pic{background:#fff}
+.hp-full .pic img{object-fit:cover;object-position:50% 50%}
+.hero2-pics:has(.hp-bust:only-child){grid-template-columns:1fr}
+.hero2 .hero-tx{flex-direction:row;flex-wrap:wrap;align-items:center;gap:4px 12px;padding:12px 16px}
+.hero2 .hero-tx h1{font-size:28px}
+.hero2 .hero-tx .btn{margin-left:auto}

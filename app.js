@@ -186,13 +186,15 @@ function vGirl(n){
   const w = wishesOf(c);
   return `
   <a class="back" href="#/girls">‹ 一覧へ</a>
-  <section class="card hero">
-    <div class="hero-pic">${pic(c)}${mainSrc(c)&&IMG[c.n]&&IMG[c.n].bust?`<button class="btn sm full-btn" data-full="${c.n}">全身を見る</button>`:""}</div>
+  <section class="card hero2">
+    <div class="hero2-pics">
+      <div class="hp-bust">${pic(c)}</div>
+      ${IMG[c.n]&&IMG[c.n].bust? `<a class="hp-full" href="${esc(mainSrc(c))}" target="_blank" rel="noopener" aria-label="${esc(c.name)}の全身を大きく見る">${pic(c,"",true)}</a>`:""}
+    </div>
     <div class="hero-tx">
       <span class="kana">No.${pad3(c.n)}</span>
       <h1>${esc(c.name)}</h1>
       <div class="stone">${esc(c.stone)}</div>
-      
       <button class="btn pink" data-oshi-big="${c.n}" aria-pressed="${on}">${on? "♥ 推し登録ずみ":"♡ 推しに登録"}</button>
     </div>
   </section>
