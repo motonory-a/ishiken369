@@ -402,3 +402,7 @@ body.lb-open .mosaic{animation-play-state:paused}
 .mg-view{padding:8px}
 .mg-view img{display:block;width:100%;height:auto;border-radius:10px}
 .mg-nav{display:flex;justify-content:space-between;margin:12px 0}
+
+/* ホーム画面に追加 */
+.install-card .install-how{margin:8px 0 0;padding-left:1.4em;line-height:1.8;font-size:14px}
+.install-card .btn{margin-top:4px}

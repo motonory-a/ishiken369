@@ -124,6 +124,24 @@ function addOhayo(){
   toast(`毎朝${v}の予定を作りました。カレンダーに追加してください`);
 }
 
+/* ---------- ホーム画面に追加(アプリのように使う) ---------- */
+let installEvt = null;
+function isStandalone(){ try{ return window.matchMedia("(display-mode: standalone)").matches || window.navigator.standalone === true; }catch(e){ return false; } }
+function isIOS(){ return /iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.platform==="MacIntel" && navigator.maxTouchPoints>1); }
+function installCard(){
+  if(isStandalone()) return "";
+  const btn = installEvt ? `<button class="btn pri" id="installBtn">ホーム画面に追加する</button>` : "";
+  const how = isIOS()
+    ? `<ol class="install-how"><li>Safariの下にある <b>共有ボタン</b>（四角から矢印が出ているマーク）を押す</li><li><b>「ホーム画面に追加」</b>を選ぶ</li><li>右上の<b>「追加」</b>を押す</li></ol>`
+    : (installEvt ? "" : `<ol class="install-how"><li>ブラウザのメニュー（︙）を開く</li><li><b>「ホーム画面に追加」</b>または<b>「アプリをインストール」</b>を選ぶ</li></ol>`);
+  return `<section class="card pad install-card"><h2 class="sec-t" style="margin-top:0">いしけん！をアプリのように使う</h2>
+    <p class="muted" style="margin:0 0 8px">ホーム画面にアイコンを置くと、ワンタップで部室に来られます。推しベスト5もそのまま残ります。</p>${btn}${how}</section>`;
+}
+window.addEventListener("beforeinstallprompt", e => { e.preventDefault(); installEvt = e; if(typeof rerender==="function" && (location.hash===""||location.hash==="#/")) rerender(); });
+window.addEventListener("appinstalled", () => { installEvt = null; try{ gtag("event","app_installed"); }catch(e){} toast("ホーム画面に追加しました"); });
+if("serviceWorker" in navigator){ window.addEventListener("load", () => { navigator.serviceWorker.register("sw.js").catch(()=>{}); }); }
+try{ if(isStandalone()) gtag("event","open_from_homescreen"); }catch(e){}
+
 function lineCard(){
   return `<p class="line-soft">いしけん！の新しいお知らせは、運営の<a href="${LINE_ADD}" target="_blank" rel="noopener">公式LINE</a>でもお届けしています。</p>`;
 }
@@ -178,6 +196,7 @@ function vHome(){
     <p class="muted" style="margin:0 0 8px">スマホのカレンダーに毎朝の予定を入れます。時間になると通知が出て、押すとその日の誕生日の子に会えます。</p>
     <div class="ohayo-row"><label>毎朝 <input type="time" id="ohayoTime" value="${esc(ohayoTime())}" step="300"></label><button class="btn pri" id="ohayoAdd">カレンダーに入れる</button></div>
   </section>
+  ${installCard()}
   ${lineCard()}
   ${shareCard()}
   ${INSTA_ON?`<a class="card insta" href="${INSTA}" target="_blank" rel="noopener"><span class="ig"></span><span><b>毎朝7:30に「おはよう」が届く</b><br><span class="muted">Instagram @ishiken369 で部員たちの日常を配信中</span></span></a>`:""}`;
@@ -646,6 +665,7 @@ document.addEventListener("click", e=>{
   if(d.pick){ const n = +d.pick; const p = getPick(store.get()); const i = p.indexOf(n); if(i>=0) p.splice(i,1); else { if(p.length>=3){ toast("選べるのは3人までです。外したい子を先に押してね"); return; } p.push(n); } setPick(p); rerender(); return; }
   if(d.sharesite){ (async()=>{ const text="天然石が女の子になった369人の部員から推しを探せる「いしけん！」"; try{ if(navigator.share){ await navigator.share({title:"いしけん！〜天然石研究部〜", text, url:SITE}); return; } }catch(e){ return; } try{ await navigator.clipboard.writeText(text+"\n"+SITE); toast("リンクをコピーしました"); }catch(e){ toast(SITE); } })(); return; }
   if(t.id==="ohayoAdd"){ addOhayo(); return; }
+  if(t.id==="installBtn" && installEvt){ installEvt.prompt(); installEvt.userChoice.finally(()=>{ installEvt=null; rerender(); }); return; }
   if(t.id==="oshare"){ const v = store.get(); share(`わたしのいしけん推しベスト5：${v.map((n,i)=>`${i+1}位 ${BY.get(n).name}`).join("／")}`); return; }
   if(d.share){ const c = BY.get(+d.share); share(`いしけん！の${c.name}（${c.stone}）`); return; }
   if(d.cm){ CAL.m = +d.cm; CAL.d = Math.min(CAL.d, new Date(2024,CAL.m,0).getDate()); rerender(); return; }
