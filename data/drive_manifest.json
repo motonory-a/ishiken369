@@ -1361,6 +1361,11 @@
 "path": "01"
 },
 {
+"name": "4コマ_073_はじめましてのじょうだん.png",
+"id": "1O7v6SW3MqiFCEkSPLMJX3gWbTzXqBWcC",
+"path": "01"
+},
+{
 "name": "集合絵_トップ用.png",
 "id": "1yVqkr1OVi5atwXwuxSoleOC_c59Mq2l3",
 "path": "01"
@@ -3105,6 +3110,11 @@
 "path": "03"
 },
 {
+"name": "030_パイカ_場面3.png",
+"id": "1oR6x5tFuxGQupFY3gonxWtT0vcSIZi7J",
+"path": "03"
+},
+{
 "name": "030_パイカ_表情.png",
 "id": "1X-5aifwYsUF5a0PeFQcEs8SArrZwLeWR",
 "path": "03"
@@ -3117,6 +3127,16 @@
 {
 "name": "031_レピカ_三面図.png",
 "id": "1Rn5t1mdsVC5lKMBdQyLS6ncLWik0Xhew",
+"path": "03"
+},
+{
+"name": "031_レピカ_場面1.png",
+"id": "1W0xDP_MwWfDOfktvMLGN1_7U5c3Q9Tg-",
+"path": "03"
+},
+{
+"name": "031_レピカ_場面2.png",
+"id": "13rMv2Rgf6_2zZZUrFkWMDBE_lHCZnK2S",
 "path": "03"
 },
 {
@@ -3415,6 +3435,11 @@
 "path": "03"
 },
 {
+"name": "050_カガリ_場面3.png",
+"id": "16t6N5Z9lJZtD6Hp944qTIT2tqzB6Z_nK",
+"path": "03"
+},
+{
 "name": "050_カガリ_表情.png",
 "id": "1c264LO86riHwZM6ezqIbMbh6XfQp5LVc",
 "path": "03"
@@ -3427,6 +3452,11 @@
 {
 "name": "051_メノ_三面図.png",
 "id": "1k85eSIYb1hfUUvvi1MEzEN6xEDXvdUEY",
+"path": "03"
+},
+{
+"name": "051_メノ_場面1.png",
+"id": "17DQeT4tFm950D-n53F_Qgx38ZvNn_7H6",
 "path": "03"
 },
 {
