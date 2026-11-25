@@ -187,7 +187,7 @@ function vHome(){
   <div class="entries">
     <a class="entry e-girls" href="#/girls"><span class="eic"><i class="ic ic-girls"></i></span><span>女の子から探す<small>369人の中からビビッとくる子を</small></span></a>
     <a class="entry e-stones" href="#/stones"><span class="eic"><i class="ic ic-gem"></i></span><span>石から探す<small>好きな色・願い事から</small></span></a>
-    <a class="entry e-quiz" href="#/quiz"><span class="eic"><i class="ic ic-q"></i></span><span>質問から探す<small>8つの質問で相性のいい子を</small></span></a>
+    <a class="entry e-quiz" href="#/quiz"><span class="eic"><i class="ic ic-q"></i></span><span>質問から探す<small>8つの質問であなたのタイプと推し石がわかる</small></span></a>
   </div>
   <h2 class="sec-t">あなたの推しベスト5</h2>
   <div class="card best-row">${row}</div>
@@ -334,8 +334,9 @@ const QUIZ = [
   {q:"放課後の寄り道先は？", a:[["🌊","海辺や川べり",["水色","青","白"]],["🌳","公園や森",["緑","茶"]],["🏮","商店街の夜市",["赤","橙","金銀"]],["🌌","星が見える丘",["紫","黒","虹"]]]},
   {q:"ブレスレットを作るなら？", a:[["🤍","透明感のあるシンプル系",["透明","白"]],["🌈","いろんな色のカラフル系",["虹","黄","ピンク"]],["🖤","シックで大人っぽい系",["黒","茶","金銀"]],["💜","深い色のミステリアス系",["紫","青","緑"]]]}
 ];
-let QS = {i:0, ans:[]};
+let QS = {i:-1, ans:[], sex:"", bm:"", bd:""};
 function vQuiz(){
+  if(QS.i<0) return vQuizStart();
   if(QS.i>=QUIZ.length) return vQuizResult();
   const it = QUIZ[QS.i];
   return `
@@ -345,7 +346,24 @@ function vQuiz(){
     <div class="bar"><i style="width:${(QS.i)/QUIZ.length*100}%"></i></div>
     <div class="card qbox">${esc(it.q)}</div>
     <div class="opts">${it.a.map((o,k)=>`<button class="opt" data-ans="${k}"><span class="oe" aria-hidden="true">${o[0]}</span>${esc(o[1])}</button>`).join("")}</div>
-    ${QS.i>0? `<p class="center"><button class="btn sm" id="qback">‹ 戻る</button></p>`:""}
+    <p class="center"><button class="btn sm" id="qback">‹ 戻る</button></p>
+  </section>`;
+}
+function vQuizStart(){
+  const opt = (n,v) => `<option value="${n}"${String(v)===String(n)?" selected":""}>${n}</option>`;
+  return `
+  <h1 class="ribbon">推し石診断</h1>
+  <section class="card qwrap qs-start">
+    <p class="center" style="margin:0 0 12px">8つの質問に答えると、あなたのタイプと、369人の中からあなたの推し石の子がわかります。</p>
+    <div class="lbl">生年月日（任意）</div>
+    <div class="qs-bday"><select id="qbm" aria-label="誕生月"><option value="">月</option>${Array.from({length:12},(_,i)=>opt(i+1,QS.bm)).join("")}</select><select id="qbd" aria-label="誕生日"><option value="">日</option>${Array.from({length:31},(_,i)=>opt(i+1,QS.bd)).join("")}</select></div>
+    <p class="muted" style="font-size:12px;margin:4px 0 14px">入れると「誕生日石の子」も一緒にわかります</p>
+    <div class="lbl">あなたについて教えてください</div>
+    <div class="opts qs-sex">
+      <button class="opt" data-sex="f"><span class="oe" aria-hidden="true">👧</span>女性</button>
+      <button class="opt" data-sex="m"><span class="oe" aria-hidden="true">👦</span>男性</button>
+      <button class="opt" data-sex="n"><span class="oe" aria-hidden="true">🌙</span>答えない</button>
+    </div>
   </section>`;
 }
 function quizRank(){
@@ -354,31 +372,110 @@ function quizRank(){
   const seed = QS.ans.join("");
   return [...C].sort((a,b)=>((score[b.color]||0)-(score[a.color]||0)) || (hash(seed+a.n)%1000)-(hash(seed+b.n)%1000)).slice(0,3);
 }
+const TYPE = {
+  "透明":["澄みきり素直タイプ","まわりの空気をそのまま映せる、まっすぐな人。迷ったときほど、心の底の本音はくっきり透けて見えています。"],
+  "白":["やさしい月あかりタイプ","そばにいる人をふんわり安心させる人。強く主張しないけれど、あなたがいるだけで場がやわらかくなります。"],
+  "金銀":["きらめく努力家タイプ","目標に向かって自分を磨き続ける人。涼しい顔をしていても、見えないところでちゃんと積み上げています。"],
+  "黄":["陽だまり社交タイプ","明るさで人を引き寄せる人。あなたの「いいね！」の一言に救われている友だちは、きっと多いはず。"],
+  "橙":["元気な火付け役タイプ","思い立ったらすぐ動ける人。あなたが最初の一歩をふむと、まわりも自然とついてきます。"],
+  "赤":["情熱まっすぐタイプ","好きなことにはとことん本気の人。負けず嫌いなところも、仲間を守る強さにつながっています。"],
+  "ピンク":["世話焼きあまえんぼタイプ","人の気持ちに気づくのが得意な人。たまには自分が甘える番だということも、忘れないでいてね。"],
+  "紫":["静かな職人タイプ","言葉より手を動かして気持ちを伝える人。こだわりの深さは、時間がたつほど周りに伝わっていきます。"],
+  "青":["物知り観察タイプ","好きなことを深く掘り下げる人。あなたの「実はね」から始まる話を、楽しみにしている人がいます。"],
+  "水色":["さわやか自由タイプ","風通しのいい考え方ができる人。決まった形にとらわれないところが、いちばんの魅力です。"],
+  "緑":["癒やしの育て屋タイプ","人やものをじっくり育てられる人。あなたが水をやったものは、ゆっくりでも必ず芽を出します。"],
+  "茶":["どっしり安心タイプ","地に足のついた、頼れる人。派手さより確かさを選ぶあなたに、みんな最後は相談に来ます。"],
+  "黒":["クールな守り人タイプ","一見クールでも、大切なものは全力で守る人。ふとした笑顔に、ギャップを感じる人も多いはず。"],
+  "虹":["変幻自在アーティストタイプ","見るたびにちがう表情を見せる人。気分屋に見えて、実はいろんな角度から物事を感じとっています。"]
+};
+const typeOf = c => TYPE[c.color] || ["ひみつの原石タイプ","まだ誰も知らない魅力を秘めた人。これからどんな色に輝くか、楽しみです。"];
+const COMP = {"透明":"虹","虹":"透明","白":"赤","赤":"白","金銀":"青","青":"金銀","黄":"紫","紫":"黄","橙":"水色","水色":"橙","ピンク":"黒","黒":"ピンク","緑":"茶","茶":"緑"};
+function quizResult(){
+  const top = quizRank()[0];
+  let main = top;
+  if(QS.sex==="m"){
+    const col = COMP[top.color] || top.color, seed = QS.ans.join("");
+    const pool = C.filter(x=>x.color===col);
+    if(pool.length) main = pool.sort((a,b)=>(hash(seed+a.n)%1000)-(hash(seed+b.n)%1000))[0];
+  }
+  const bday = QS.bm && QS.bd ? byDate(`${+QS.bm}月${+QS.bd}日`)[0] : null;
+  return {main, mates: friendsOf(main).slice(0,4), you: typeOf(top), male: QS.sex==="m", bday};
+}
 function vQuizResult(){
-  const r = quizRank();
-  const reason = c => {
-    const w = wishesOf(c)[0];
-    return w? `「${w}」の言い伝えがある${c.stone}の子。今のあなたにぴったりかも。` : `${c.stone}担当。あなたの毎日にそっと寄り添ってくれそう。`;
-  };
+  const {main:c, mates, you:t, male, bday} = quizResult();
+  const w = wishesOf(c)[0];
+  const on = store.get().includes(c.n);
+  const teaser = f => clean(f.trig||f.hook||"") ? `気になるのは…「${esc(clean(f.trig||f.hook))}」` : `${esc(f.stone)}担当。どんな子か会いにいこう`;
   return `
   <h1 class="ribbon">診断結果</h1>
-  <h2 class="center" style="font-size:17px;margin-bottom:10px">✦ あなたに合う子 ✦</h2>
-  ${r.map((c,i)=>`<section class="card res${i===0?" first":""}">
-    <a href="#/girl/${c.n}">${pic(c)}</a>
-    <div class="res-tx"><span class="rk">${i+1}位</span><br><b>${esc(c.name)}</b> <span class="muted">${esc(c.stone)}</span>
-      <p>${esc(reason(c))}</p>
-      <div class="row-btns"><button class="btn pink sm" data-oshi-big="${c.n}">♡ 推しに登録</button><a class="btn sm" href="#/girl/${c.n}">ページを見る ›</a></div></div>
-  </section>`).join("")}
-  <div class="row-btns" style="justify-content:center;margin-top:6px">
-    <button class="btn" id="qretry">↻ もう一度診断する</button>
-    ${INSTA_ON?`<a class="btn pri" href="${INSTA}" target="_blank" rel="noopener">Instagramでこの子に会う ›</a>`:""}
+  <section class="card qr-main" style="--tc:${colorOf(c)}">
+    <p class="qr-kicker">あなたは</p>
+    <h2 class="qr-type">${esc(t[0])}</h2>
+    <a class="qr-pic" href="#/girl/${c.n}">${pic(c,"",true)}</a>
+    <p class="qr-kicker">${male? "あなたと相性ぴったりの推し石は":"あなたに似ている推し石は"}</p>
+    <div class="qr-name">${esc(c.name)}<small>${esc(c.stone)}の子</small></div>
+    <p class="qr-desc">${esc(t[1])}</p>
+    ${male? `<p class="qr-desc" style="margin-top:0">そんなあなたと相性がいいのは、${esc(c.name)}。あなたにない魅力を持った子です。</p>`:""}
+    ${c.pers? `<p class="qr-pers"><b>${esc(c.name)}はこんな子</b>${esc(c.pers)}</p>`:""}
+    ${w? `<p class="muted qr-wish">${esc(c.stone)}は「${esc(w)}」の言い伝えがある石です。</p>`:""}
+    <div class="row-btns qr-btns"><button class="btn pink" data-oshi-big="${c.n}" aria-pressed="${on}">${on? "♥ 推し登録ずみ":"♡ 推しに登録"}</button><a class="btn" href="#/girl/${c.n}">${esc(c.name)}のページへ ›</a></div>
+  </section>
+
+  ${bday? `<section class="card qr-bday" style="--tc:${colorOf(bday)}"><a class="qr-mpic" href="#/girl/${bday.n}">${pic(bday)}</a><div><span class="qr-kicker">${+QS.bm}月${+QS.bd}日生まれのあなたの</span><b>誕生日石の子</b><div class="qr-bname">${esc(bday.name)}<small>${esc(bday.stone)}</small></div><a class="btn sm" href="#/girl/${bday.n}">会いにいく ›</a></div></section>`:""}
+  <section class="card qr-share">
+    <b>結果を画像でシェア</b>
+    <p class="muted">${esc(c.name)}と仲良しの仲間が入ったカードを作ります。ストーリーやLINEに貼ってね。</p>
+    <button class="btn pri wide" id="qcard">結果カードを作る</button>
+    <div id="qcardOut"></div>
+  </section>
+
+  <h2 class="sec-t qr-mt">${esc(c.name)}の仲良しの仲間</h2>
+  <p class="muted qr-mlead">同じ「${esc(c.group)}」で、いつも${esc(c.name)}と一緒にいる子たち。気になる子がいたら会いにいってみてね。</p>
+  <div class="qr-mates">${mates.map(f=>`<div class="qr-mate card" style="--tc:${colorOf(f)}">
+    <a class="qr-mpic" href="#/girl/${f.n}">${pic(f)}</a>${heart(f)}
+    <a class="qr-mtx" href="#/girl/${f.n}"><b>${esc(f.name)}</b><span>${esc(f.stone)}</span>
+      ${f.pers? `<em>${esc(f.pers)}</em>`:""}
+      <small>${teaser(f)}</small></a>
+  </div>`).join("")}</div>
+
+  <section class="card shop" style="margin-top:16px">${bracelet([c,...mates.slice(0,2)].map(colorOf))}
+    <div class="shop-tx"><h3>${esc(c.name)}と仲間の石で<br>ブレスレットを作る</h3><p class="muted" style="margin:0 0 8px">${[c,...mates.slice(0,2)].map(x=>esc(x.stone)).join("・")}</p>${lineBtns([c,...mates.slice(0,2)].map(x=>x.stone), `診断の推し：${c.name}（仲間：${mates.slice(0,2).map(x=>x.name).join("・")}）`, "LINEで相談する")}</div></section>
+  <div class="row-btns" style="justify-content:center;margin-top:12px">
+    <button class="btn sm" id="qshare">結果をシェア</button>
+    <button class="btn sm" id="qretry">↻ もう一度診断する</button>
+    ${INSTA_ON?`<a class="btn sm" href="${INSTA}" target="_blank" rel="noopener">Instagramで会う ›</a>`:""}
   </div>
-  <section class="card shop" style="margin-top:14px">${bracelet(r.map(colorOf))}
-    <div class="shop-tx"><h3>この3人の石で<br>ブレスレットを作る</h3><p class="muted" style="margin:0 0 8px">${r.map(c=>esc(c.stone)).join("・")}</p>${lineBtns(r.map(c=>c.stone), "診断で合った子："+r.map(c=>c.name).join("・"), "LINEで相談する")}</div></section>
-  <p class="center"><button class="btn sm" id="qshare">結果をシェア</button></p>
   ${shareCard()}`;
 }
 
+/* 結果カード(画像) */
+function loadImg(src){ return new Promise(r=>{ if(!src) return r(null); const im = new Image(); im.onload=()=>r(im); im.onerror=()=>r(null); im.src=src; }); }
+function rr(g,x,y,w,h,r){ g.beginPath(); g.moveTo(x+r,y); g.arcTo(x+w,y,x+w,y+h,r); g.arcTo(x+w,y+h,x,y+h,r); g.arcTo(x,y+h,x,y,r); g.arcTo(x,y,x+w,y,r); g.closePath(); }
+function cover(g,im,x,y,w,h,fy=.2){ const s=Math.max(w/im.width,h/im.height), iw=im.width*s, ih=im.height*s; g.drawImage(im, x+(w-iw)/2, y+(h-ih)*fy, iw, ih); }
+async function makeCard(){
+  const {main:c, mates, you:t, male} = quizResult(); const col = colorOf(c);
+  const W=1080, H=1920, cv=document.createElement("canvas"); cv.width=W; cv.height=H; const g=cv.getContext("2d");
+  try{ await document.fonts.ready; }catch(e){}
+  const bg=g.createLinearGradient(0,0,0,H); bg.addColorStop(0,"#fbf7ff"); bg.addColorStop(.55,col+"66"); bg.addColorStop(1,"#fff"); g.fillStyle=bg; g.fillRect(0,0,W,H);
+  g.textAlign="center"; const head='"M PLUS Rounded 1c","Zen Maru Gothic",sans-serif';
+  g.fillStyle="#7d5bcc"; g.font=`800 44px ${head}`; g.fillText("いしけん！ 推し石診断",W/2,120);
+  g.fillStyle="#4a3a78"; g.font=`700 46px ${head}`; g.fillText("わたしは",W/2,215);
+  g.font=`800 78px ${head}`; g.fillText(t[0],W/2,310);
+  const mi = await loadImg(mainSrc(c)||bustSrc(c));
+  g.save(); rr(g,150,360,780,900,56); g.fillStyle="#fff"; g.fill(); g.clip(); if(mi) cover(g,mi,150,360,780,900,.15); g.restore();
+  g.lineWidth=8; g.strokeStyle="#e6c98a"; rr(g,150,360,780,900,56); g.stroke();
+  g.fillStyle="#4a3a78"; g.font=`700 44px ${head}`; g.fillText(male? "相性ぴったりの推し石は":"わたしに似ている推し石は",W/2,1340);
+  g.font=`800 120px ${head}`; g.fillText(c.name,W/2,1460);
+  g.font=`700 48px ${head}`; g.fillStyle="#6b5aa0"; g.fillText(`${c.stone}の子`,W/2,1530);
+  g.font=`700 38px ${head}`; g.fillStyle="#4a3a78"; g.fillText("仲良しの仲間",W/2,1615);
+  const n=mates.length, R=78, gap=40, x0=W/2-((n*2*R)+(n-1)*gap)/2+R;
+  for(let i=0;i<n;i++){ const f=mates[i], x=x0+i*(2*R+gap), y=1715, im=await loadImg(bustSrc(f));
+    g.save(); g.beginPath(); g.arc(x,y,R,0,Math.PI*2); g.fillStyle=colorOf(f); g.fill(); g.clip(); if(im) cover(g,im,x-R,y-R,2*R,2*R,.15); g.restore();
+    g.lineWidth=6; g.strokeStyle="#fff"; g.beginPath(); g.arc(x,y,R,0,Math.PI*2); g.stroke();
+    g.fillStyle="#4a3a78"; g.font=`700 30px ${head}`; g.fillText(f.name,x,y+R+40); }
+  g.fillStyle="#8a7fb0"; g.font=`500 28px ${head}`; g.fillText("motonory-a.github.io/ishiken369",W/2,H-30);
+  return cv;
+}
 /* 推しベスト5 */
 function vOshi(){
   const v = store.get();
@@ -657,9 +754,15 @@ document.addEventListener("click", e=>{
   if(d.sm){ SS.month = SS.month==d.sm? "": +d.sm; rerender(); return; }
   if(t.id==="sclear"){ SS.color=SS.wish=SS.month=""; rerender(); return; }
   if(d.ans!==undefined){ QS.ans[QS.i] = +d.ans; QS.i++; route(); return; }
-  if(t.id==="qback"){ QS.i = Math.max(0,QS.i-1); route(); return; }
-  if(t.id==="qretry"){ QS = {i:0, ans:[]}; route(); return; }
-  if(t.id==="qshare"){ const r = quizRank(); share(`わたしに合ういしけん部員は ${r.map(c=>`${c.name}（${c.stone}）`).join("・")} でした！`); return; }
+  if(t.id==="qback"){ QS.i = Math.max(-1,QS.i-1); route(); return; }
+  if(t.id==="qretry"){ QS.i = -1; QS.ans = []; route(); return; }
+  if(d.sex){ QS.sex = d.sex; QS.bm = (document.getElementById("qbm")||{}).value||""; QS.bd = (document.getElementById("qbd")||{}).value||""; QS.i = 0; QS.ans = []; route(); return; }
+  if(t.id==="qshare"){ const {main:c, mates, you, male} = quizResult(); share(`わたしは「${you[0]}」！${male?"相性ぴったりの":""}推し石は${c.name}（${c.stone}）でした。仲良しの仲間は${mates.map(x=>x.name).join("・")} #いしけん #推し石診断`); return; }
+  if(t.id==="qcard"){ t.disabled = true; t.textContent = "作っています…"; makeCard().then(cv=>{ let url=""; try{ url = cv.toDataURL("image/png"); }catch(e){} const out = document.getElementById("qcardOut"); if(!out) return;
+      if(!url){ out.innerHTML = `<p class="muted">カードを作れませんでした。時間をおいてもう一度試してね。</p>`; t.disabled=false; t.textContent="結果カードを作る"; return; }
+      out.innerHTML = `<img class="qr-card" src="${url}" alt="診断結果カード"><p class="muted center" style="font-size:12px">スマホは画像を長押しで保存できます</p><div class="row-btns" style="justify-content:center"><a class="btn sm" href="${url}" download="ishiken-oshi.png">画像を保存</a>${navigator.canShare? `<button class="btn sm pri" id="qcardShare">画像をシェア</button>`:""}</div>`;
+      out._cv = cv; t.hidden = true; }); return; }
+  if(t.id==="qcardShare"){ const cv = document.getElementById("qcardOut")._cv; cv && cv.toBlob(async b=>{ try{ const f = new File([b],"ishiken-oshi.png",{type:"image/png"}); if(navigator.canShare({files:[f]})) await navigator.share({files:[f], text:"#いしけん #推し石診断", title:"いしけん！推し石診断"}); else toast("この端末では画像のシェアができません。保存してから送ってね"); }catch(e){} }); return; }
   if(d.up!==undefined || d.down!==undefined){ const v = store.get(); const i = +(d.up ?? d.down); const j = d.up!==undefined? i-1 : i+1; [v[i],v[j]]=[v[j],v[i]]; store.set(v); rerender(); return; }
   if(d.del){ toggleOshi(+d.del); rerender(); return; }
   if(d.pick){ const n = +d.pick; const p = getPick(store.get()); const i = p.indexOf(n); if(i>=0) p.splice(i,1); else { if(p.length>=3){ toast("選べるのは3人までです。外したい子を先に押してね"); return; } p.push(n); } setPick(p); rerender(); return; }

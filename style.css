@@ -406,3 +406,42 @@ body.lb-open .mosaic{animation-play-state:paused}
 /* ホーム画面に追加 */
 .install-card .install-how{margin:8px 0 0;padding-left:1.4em;line-height:1.8;font-size:14px}
 .install-card .btn{margin-top:4px}
+
+/* ---------- 診断結果(1人のタイプ＋仲良しの仲間) ---------- */
+.qr-main{padding:20px 16px 18px;text-align:center;background:linear-gradient(170deg,#fff 0%,#fff 55%,color-mix(in srgb,var(--tc) 30%,#fff) 100%)}
+.qr-kicker{margin:0;font-family:var(--head);font-weight:700;color:#8a7fb0;font-size:14px}
+.qr-type{margin:2px 0 12px;font-family:var(--head);font-weight:800;font-size:min(6vw,32px);line-height:1.2;color:var(--navy);white-space:nowrap}
+.qr-pic{display:block;margin:0 auto 12px;max-width:300px}
+.qr-pic .pic{height:min(400px,95vw);border-radius:20px;border:3px solid var(--gold2,#e6c98a);box-shadow:0 10px 26px rgba(120,96,190,.2)}
+.qr-pic .pic img{object-position:50% 12%}
+.qr-name{font-family:var(--head);font-weight:800;font-size:clamp(34px,10vw,46px);line-height:1.1;color:var(--navy)}
+.qr-name small{display:block;font-size:16px;font-weight:700;color:#6b5aa0;margin-top:4px}
+.qr-desc{margin:12px 0 8px;text-align:left;font-size:15px}
+.qr-pers{margin:0 0 8px;text-align:left;font-size:14px;background:#faf6ff;border-radius:14px;padding:10px 12px}
+.qr-pers b{display:block;font-family:var(--head);color:#7d5bcc;margin-bottom:2px}
+.qr-wish{text-align:left;font-size:13px;margin:0 0 10px}
+.qr-btns{justify-content:center}
+.qr-share{padding:16px;margin-top:14px;text-align:center}
+.qr-share p{margin:4px 0 10px;font-size:13px}
+.qr-card{display:block;width:min(320px,100%);margin:12px auto 6px;border-radius:16px;box-shadow:0 8px 22px rgba(120,96,190,.25)}
+.qr-mt{margin-top:22px}
+.qr-mlead{margin:-4px 0 10px;font-size:13px}
+.qr-mates{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.qr-mate{position:relative;overflow:hidden;display:flex;flex-direction:column;border-top:5px solid var(--tc)}
+.qr-mpic .pic{height:150px;border-radius:0}
+.qr-mpic .pic img{object-position:50% 15%}
+.qr-mate .heart{position:absolute;top:8px;right:8px}
+.qr-mtx{display:flex;flex-direction:column;gap:2px;padding:10px 10px 12px;text-decoration:none;color:var(--text)}
+.qr-mtx b{font-family:var(--head);font-size:18px;color:var(--navy)}
+.qr-mtx span{font-size:12px;color:#6b5aa0;font-weight:700}
+.qr-mtx em{font-style:normal;font-size:13px;line-height:1.5;margin-top:4px}
+.qr-mtx small{font-size:12px;color:#8a7fb0;line-height:1.45;margin-top:4px}
+@media(min-width:720px){.qr-mates{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.qs-start .lbl{font-family:var(--head);font-weight:700;color:var(--navy);margin-bottom:6px}
+.qs-bday{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px}
+.qs-bday select{min-height:46px;border-radius:14px;border:1.5px solid rgba(157,123,230,.4);background:#fff;color:var(--navy);font-size:16px;padding:0 10px}
+.qr-bday{display:grid;grid-template-columns:110px minmax(0,1fr);gap:12px;align-items:center;margin-top:14px;overflow:hidden;border-left:6px solid var(--tc)}
+.qr-bday .qr-mpic .pic{height:130px}
+.qr-bday b{display:block;font-family:var(--head);color:#7d5bcc}
+.qr-bname{font-family:var(--head);font-weight:800;font-size:24px;color:var(--navy);margin:2px 0 8px}
+.qr-bname small{display:block;font-size:12px;color:#6b5aa0}
