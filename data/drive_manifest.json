@@ -1301,6 +1301,11 @@
 "path": "01"
 },
 {
+"name": "4コマ_061_ほつれたすそ.png",
+"id": "11TvHjmIroCgmYzh4_gEacJ8-ArKR3GRx",
+"path": "01"
+},
+{
 "name": "集合絵_トップ用.png",
 "id": "1yVqkr1OVi5atwXwuxSoleOC_c59Mq2l3",
 "path": "01"
@@ -2925,6 +2930,11 @@
 "path": "03"
 },
 {
+"name": "026_ヴェルネ_場面3.png",
+"id": "1QzTaSStVOpoPEn88_qeuHmYzkMvzezvk",
+"path": "03"
+},
+{
 "name": "026_ヴェルネ_表情.png",
 "id": "1Xk89T6is2N4UrHnYZ4DLUs0hvtgArnri",
 "path": "03"
@@ -2937,6 +2947,11 @@
 {
 "name": "027_デュミ_三面図.png",
 "id": "1AwVllv0ZyNN4iWGby7fUz3ms5O0DF1GU",
+"path": "03"
+},
+{
+"name": "027_デュミ_場面1.png",
+"id": "1-clS5KBw4pf82ZEaoISG0oQjcdT-Espn",
 "path": "03"
 },
 {
@@ -5110,8 +5125,18 @@
 "path": "03"
 },
 {
+"name": "173_ゴルナ_ポーズ.png",
+"id": "1ac86AikcGEW3PeEmyF0K_WPLlwVKv2mO",
+"path": "03"
+},
+{
 "name": "173_ゴルナ_三面図.png",
 "id": "1cuBDwpXIEY-nAUnX6tdZlH7W7o7BF3nk",
+"path": "03"
+},
+{
+"name": "173_ゴルナ_表情.png",
+"id": "1qybygSLoyRafrOsfM_-HdKjQBkcSGhS4",
 "path": "03"
 },
 {
