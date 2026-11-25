@@ -1311,6 +1311,11 @@
 "path": "01"
 },
 {
+"name": "4コマ_063_いえなかったことば.png",
+"id": "1Gz979sh8PtQloojFKXjbuJ2g1Za0Lnu4",
+"path": "01"
+},
+{
 "name": "集合絵_トップ用.png",
 "id": "1yVqkr1OVi5atwXwuxSoleOC_c59Mq2l3",
 "path": "01"
@@ -2965,6 +2970,11 @@
 "path": "03"
 },
 {
+"name": "027_デュミ_場面3.png",
+"id": "1HT1M900iVTPQ1lznTZZOMkfIHzcp1Y79",
+"path": "03"
+},
+{
 "name": "027_デュミ_表情.png",
 "id": "1ouhfJTx4zfQ4-RI-vZwoCwtSJlsGgilU",
 "path": "03"
@@ -2977,6 +2987,16 @@
 {
 "name": "028_アクティ_三面図.png",
 "id": "1Rkk9_oHKQoZHDvXUrdVSudgaW2Exv_JO",
+"path": "03"
+},
+{
+"name": "028_アクティ_場面1.png",
+"id": "19cra-c4Eu5IAlnX88pmHPpmw-rIahgK5",
+"path": "03"
+},
+{
+"name": "028_アクティ_場面2.png",
+"id": "1x2YHKVtA237GDWsMylwoD1Jy6RfMxVp3",
 "path": "03"
 },
 {
@@ -5150,8 +5170,18 @@
 "path": "03"
 },
 {
+"name": "174_レイラ_ポーズ.png",
+"id": "1pky1OUkFMx-B12YVGmypI4Lce6F1CXtF",
+"path": "03"
+},
+{
 "name": "174_レイラ_三面図.png",
 "id": "1INdC4TfsOtVho9Gn3s4nJWwnI5x9N5fp",
+"path": "03"
+},
+{
+"name": "174_レイラ_表情.png",
+"id": "1jDMPdfFAIv3GI7CyFF2wOn5KQlAVJjEQ",
 "path": "03"
 },
 {
