@@ -1,0 +1,19 @@
+:root{--bg:#FAF8FF;--navy:#2F355B;--text:#4b5063;--lav:#9C83E0;--line:#e7defb}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Noto Sans JP",sans-serif;color:var(--text);background:var(--bg);line-height:1.9;-webkit-text-size-adjust:100%}
+.wrap{max-width:760px;margin:0 auto;padding:28px 20px 64px}
+.top{font-size:14px;margin-bottom:18px}
+.top a{color:var(--lav);text-decoration:none}
+h1{font-family:"M PLUS Rounded 1c",sans-serif;color:var(--navy);font-size:26px;line-height:1.5;margin:0 0 6px}
+.sub{font-size:14px;color:#8a8ea0;margin:0 0 28px}
+h2{font-family:"M PLUS Rounded 1c",sans-serif;color:var(--navy);font-size:19px;margin:36px 0 10px;padding-bottom:6px;border-bottom:2px solid var(--line)}
+p,li{font-size:15.5px}
+ul,ol{padding-left:1.4em}
+li{margin:6px 0}
+table{width:100%;border-collapse:collapse;font-size:15px;background:#fff;border-radius:14px;overflow:hidden}
+th,td{text-align:left;vertical-align:top;padding:12px 14px;border-bottom:1px solid var(--line)}
+th{width:32%;color:var(--navy);background:#f4f0ff;font-weight:700}
+.box{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 18px;margin:14px 0}
+.end{margin-top:40px;font-size:14px;color:#8a8ea0}
+footer{margin-top:40px;font-size:13px;color:#8a8ea0;border-top:1px solid var(--line);padding-top:16px}
+footer a{color:var(--lav);margin-right:14px;text-decoration:none}
