@@ -247,6 +247,7 @@ function vGirl(n){
     </div></div>
     ${isArtificial(c)? `<div class="note-art">この子の担当は、人の手でつくられた素材です（天然石ではありません）。</div>`:""}
   </div>
+  ${(()=>{ const m = MG.filter(e=>e.c.includes(c.n)); return m.length? `<h2 class="sec-t">${esc(c.name)}が出てくる4コマ</h2><div class="mg-grid">${[...m].reverse().map(mgCard).join("")}</div>`:""; })()}
   <h2 class="sec-t">仲のいい子</h2>
   <div class="friends">${fr.map(f=>`<a href="#/girl/${f.n}">${pic(f)}${esc(f.name)}</a>`).join("")}</div>
   <section class="card shop" style="margin-top:16px">
@@ -410,6 +411,28 @@ function vAbout(){
   <p class="muted">石の言い伝えは昔から伝わるお話です。効果を約束するものではありません。人の手でつくられた素材を担当する子には、そのことを書いています。</p>
   </section>`;
 }
+
+/* ---------- 4コマ漫画 ---------- */
+const MG = (window.MANGA||[]);
+function mgSrc(e){ return `img/4koma/${e.no}.webp`; }
+function mgWho(e){ return e.c.map(n=>BY.get(n)).filter(Boolean); }
+function mgCard(e){ return `<a class="mg-card card" href="#/manga/${e.no}"><img src="${mgSrc(e)}" alt="4コマ「${esc(e.t)}」" loading="lazy"><span class="mg-no">第${+e.no}話</span><b>${esc(e.t)}</b><small>${mgWho(e).map(c=>esc(c.name)).join("・")}</small></a>`; }
+function vManga(){
+  const list = [...MG].reverse();
+  return `<h1 class="ribbon">いしけん！4コマ</h1>
+  <p class="center muted" style="margin:-4px 0 12px">部員たちの放課後を描いた4コマ漫画。全${MG.length}話、無料で読めます。</p>
+  <div class="mg-grid">${list.map(mgCard).join("")}</div>`;
+}
+function vMangaOne(no){
+  const i = MG.findIndex(e=>e.no===no); if(i<0) return vNotFound();
+  const e = MG[i], prev = MG[i-1], next = MG[i+1];
+  return `<a class="back" href="#/manga">‹ 4コマ一覧へ</a>
+  <h1 class="ribbon">第${+e.no}話「${esc(e.t)}」</h1>
+  <div class="card mg-view"><img src="${mgSrc(e)}" alt="4コマ「${esc(e.t)}」"></div>
+  <div class="mg-nav">${prev? `<a class="btn sm" href="#/manga/${prev.no}">‹ 前の話</a>`:"<span></span>"}${next? `<a class="btn sm" href="#/manga/${next.no}">次の話 ›</a>`:"<span></span>"}</div>
+  <h2 class="sec-t">この話に出てくる子</h2>
+  <div class="friends">${mgWho(e).map(f=>`<a href="#/girl/${f.n}">${pic(f)}${esc(f.name)}</a>`).join("")}</div>`;
+}
 function vNotFound(){ return `<p class="center" style="margin-top:40px">ページが見つかりませんでした。</p><p class="center"><a class="btn" href="#/">ホームへ</a></p>`; }
 
 /* ---------- ルーター ---------- */
@@ -427,6 +450,7 @@ function route(){
     case "oshi": html = vOshi(); break;
     case "calendar": html = vCalendar(); break;
     case "about": html = vAbout(); tab=""; break;
+    case "manga": html = a? vMangaOne(a) : vManga(); tab=""; break;
     case "today": { const t = byDate(todayKey())[0] || BY.get(1); location.replace(`#/girl/${t.n}`); return; }
     default: html = vNotFound();
   }
@@ -436,7 +460,7 @@ function route(){
   if(p==="stones") renderStones();
   document.querySelectorAll(".tabs a").forEach(x=>x.classList.toggle("on", x.dataset.tab===tab));
   const c = p==="girl" && BY.get(+a);
-  document.title = c ? `${c.name}（${c.stone}）｜いしけん！〜天然石研究部〜` : "いしけん！〜天然石研究部〜｜369人の中から推しの石を見つけよう";
+  document.title = p==="manga" ? "4コマ漫画｜いしけん！〜天然石研究部〜" : c ? `${c.name}（${c.stone}）｜いしけん！〜天然石研究部〜` : "いしけん！〜天然石研究部〜｜369人の中から推しの石を見つけよう";
   closeMenu();
   if(!route.keep) window.scrollTo(0,0);
   route.keep = false;
