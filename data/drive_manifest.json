@@ -1791,6 +1791,11 @@
 "path": "01"
 },
 {
+"name": "4コマ_159_ぶたいうら.png",
+"id": "1caA2Al0c2om_hW6KmYrEkbxMvP02HSPn",
+"path": "01"
+},
+{
 "name": "いしけん4コマ_069_動く漫画.mp4",
 "id": "1o_dfru7HIyoRkJ-ASY1ARlOjoXBU0gZk",
 "path": "01"
@@ -4940,6 +4945,21 @@
 "path": "03"
 },
 {
+"name": "077_スペク_場面1.png",
+"id": "1CnOuG9rGzUH740wELVuC9Mthm9A__UZD",
+"path": "03"
+},
+{
+"name": "077_スペク_場面2.png",
+"id": "17N8p7hHpvaKmss3eiAVekNITC-Lf7EyG",
+"path": "03"
+},
+{
+"name": "077_スペク_場面3.png",
+"id": "1Io9H2rF6EzDr6m99CzBUU48S4IRB3eUL",
+"path": "03"
+},
+{
 "name": "077_スペク_表情.png",
 "id": "1vvo9iwXkw2ROUhC_N6oDqrY17VSJ0XaZ",
 "path": "03"
@@ -4957,6 +4977,16 @@
 {
 "name": "078_アマネ_場面1.png",
 "id": "14XZI488Tu61290uyH3F3s0WjBmbFGeaL",
+"path": "03"
+},
+{
+"name": "078_アマネ_場面2.png",
+"id": "1AP2JfE0xLrM_LyR_VLJo-m3ShaumQuQu",
+"path": "03"
+},
+{
+"name": "078_アマネ_場面3.png",
+"id": "1vcmUM_4Y0JYZXmaiaQfmrwiv4R5es2cZ",
 "path": "03"
 },
 {
@@ -4987,6 +5017,11 @@
 {
 "name": "080_オルテ_三面図.png",
 "id": "1_vKAPD39EkVWPfgMvZnttJ3O7TJb-W9z",
+"path": "03"
+},
+{
+"name": "080_オルテ_場面1.png",
+"id": "1hYn2WAJUJDT5y1SwQRfUeTH3Jr7IWmEC",
 "path": "03"
 },
 {
