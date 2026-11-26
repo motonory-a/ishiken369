@@ -458,3 +458,11 @@ body.lb-open .mosaic{animation-play-state:paused}
 .h-center.has-group{width:60.5%;box-shadow:0 0 0 4px #fff,0 0 0 6px #e8cd96,0 0 0 12px rgba(255,255,255,.55),0 14px 44px 6px rgba(150,100,210,.28)}
 .h-hint{color:#a77fc4;letter-spacing:.06em}
 .h-hint{letter-spacing:.02em}
+/* 2026-11-26 ロゴ:キラッと光るダイヤ */
+.logo-gem{position:relative;width:42px;height:42px;border-radius:0;box-shadow:none;background:url(img/icon/gem.svg) center/contain no-repeat;filter:drop-shadow(0 2px 4px rgba(200,110,180,.4));animation:gemglow 3.2s ease-in-out infinite}
+.logo-gem::before,.logo-gem::after{content:"";position:absolute;background:#fff;clip-path:polygon(50% 0,58% 42%,100% 50%,58% 58%,50% 100%,42% 58%,0 50%,42% 42%);filter:drop-shadow(0 0 3px #ffe9a8);animation:gemspark 3.2s ease-in-out infinite}
+.logo-gem::before{width:16px;height:16px;left:-2px;top:-3px}
+.logo-gem::after{width:10px;height:10px;right:-1px;top:14px;animation-delay:1.6s}
+@keyframes gemglow{0%,100%{filter:drop-shadow(0 2px 4px rgba(200,110,180,.4))}50%{filter:drop-shadow(0 0 9px rgba(255,170,220,.95)) brightness(1.12)}}
+@keyframes gemspark{0%,60%,100%{transform:scale(0) rotate(0);opacity:0}75%{transform:scale(1) rotate(45deg);opacity:1}}
+@media (prefers-reduced-motion:reduce){.logo-gem,.logo-gem::before,.logo-gem::after{animation:none}.logo-gem::before{opacity:1;transform:none}}
