@@ -243,7 +243,7 @@ function vGirl(n){
   <section class="card hero2">
     <div class="hero2-pics">
       <div class="hp-bust">${pic(c)}</div>
-      ${IMG[c.n]&&IMG[c.n].bust? `<a class="hp-full" href="${esc(mainSrc(c))}" target="_blank" rel="noopener" aria-label="${esc(c.name)}の全身を大きく見る">${pic(c,"",true)}</a>`:""}
+      ${IMG[c.n]&&IMG[c.n].bust? `<a class="hp-full" href="${esc(mainSrc(c))}" data-scenezoom="1" aria-label="${esc(c.name)}の全身を大きく見る">${pic(c,"",true)}</a>`:""}
     </div>
     <div class="hero-tx">
       <span class="kana">No.${pad3(c.n)}</span>
