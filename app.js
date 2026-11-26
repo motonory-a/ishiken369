@@ -164,12 +164,12 @@ function vHome(){
   return `
   <section class="hero369" aria-label="369人の部員">
     <div class="sparkles" aria-hidden="true">${"<i></i>".repeat(14)}</div>
-    <div class="mosaic"><img src="img/mosaic.webp?v=20261126" alt="いしけん！の部員369人" width="1400" height="1400"></div></div>
+    ${marqRows()}
     <div class="h-center${IMG.group?" has-group":""}">
       ${IMG.group? `<a href="${IMG.group}" data-groupzoom="1"><img class="group" src="${IMG.group}" alt="いしけん！主要メンバーの集合絵"></a>`:`<div class="h-copy"><span class="h-count" data-count="369">0</span><span class="h-unit">人の部員が</span><span class="h-line">あなたの推しを<br>待っています</span></div>`}
     </div>
   </section>
-  <p class="h-hint">✦ 輪にさわると虫めがね。動かして気になる子をタップ ✦</p>
+  <p class="h-hint">✦ 流れていく部員の中から、気になる子をタップ ✦</p>
   ${IMG.group? `<p class="h-sub"><b data-count="369">369</b>人の部員が、あなたの推しを待っています</p>`:""}
   <div class="h-cta"><a class="btn pri" href="#/quiz">3分で推し診断 ›</a><a class="btn" href="#/girls">369人を見る</a></div>
   <section class="card today" aria-label="今日の誕生日の子">
@@ -592,6 +592,19 @@ function lbHtml(n){
     <div class="lb-tx"><span class="lb-no">No.${n}</span><h3>${esc(c.name)}</h3><p class="lb-st"><span class="dot" style="background:${colorOf(c)}"></span>${esc(c.stone)}　${esc(c.date||"")}生まれ</p>
     <a class="btn pri" href="#/girl/${n}">この子のページへ ›</a></div>`;
 }
+/* ---------- トップ:集合絵の後ろを流れる部員(2026-11-26 集合体が苦手な人にも見やすく) ---------- */
+function marqRows(){
+  const ns = C.map(c=>c.n).sort(()=>Math.random()-.5);
+  const ROWS = 7, PER = 16; let k = 0, html = "";
+  for(let r=0;r<ROWS;r++){
+    const row = ns.slice(k, k+PER); k += PER;
+    const cells = row.map(n=>{ const c = BY.get(n); return `<button class="mq-c" data-mq="${n}" aria-label="${esc(c.name)}"><img src="img/thumb/${n}.webp" alt="" loading="eager" decoding="async"></button>`; }).join("");
+    html += `<div class="mq-row${r%2?" rev":""}" style="--dur:${70+((r*17)%30)}s"><div class="mq-track">${cells}${cells}</div></div>`;
+  }
+  return `<div class="marq" aria-label="いしけん！の部員たち">${html}</div>`;
+}
+document.addEventListener("click", e=>{ const b = e.target.closest(".mq-c"); if(!b) return; e.stopPropagation(); openFace(+b.dataset.mq, b); }, true);
+
 function openFace(n, fromEl){
   closeFace(true);
   const box = document.createElement("div");
@@ -729,7 +742,7 @@ function bindLens(el){
 }
 document.addEventListener("click", e=>{
   const hero = e.target.closest(".hero369");
-  if(!hero || e.target.closest(".h-center") || e.target.closest(".lens")) return;
+  if(!hero || !hero.querySelector(".mosaic") || e.target.closest(".h-center") || e.target.closest(".lens")) return;
   openLens(e.clientX, e.clientY, false);
 });
 window.addEventListener("hashchange", closeLens);

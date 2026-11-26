@@ -466,3 +466,16 @@ body.lb-open .mosaic{animation-play-state:paused}
 @keyframes gemglow{0%,100%{filter:drop-shadow(0 2px 4px rgba(200,110,180,.4))}50%{filter:drop-shadow(0 0 9px rgba(255,170,220,.95)) brightness(1.12)}}
 @keyframes gemspark{0%,60%,100%{transform:scale(0) rotate(0);opacity:0}75%{transform:scale(1) rotate(45deg);opacity:1}}
 @media (prefers-reduced-motion:reduce){.logo-gem,.logo-gem::before,.logo-gem::after{animation:none}.logo-gem::before{opacity:1;transform:none}}
+/* 2026-11-26 トップ:集合絵の後ろを部員が流れる(びっしり並んだ輪をやめる) */
+.marq{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-evenly;padding:6px 0}
+.mq-row{overflow:hidden;width:100%}
+.mq-track{display:flex;gap:12px;width:max-content;animation:mq var(--dur,80s) linear infinite}
+.mq-row.rev .mq-track{animation-direction:reverse}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.mq-c{flex:none;width:clamp(40px,11.5vw,54px);aspect-ratio:5/6;padding:0;border:2px solid #fff;border-radius:10px;overflow:hidden;background:#fff;box-shadow:0 3px 10px rgba(150,100,200,.22);opacity:.92;transition:transform .2s,opacity .2s}
+.mq-c img{width:100%;height:100%;object-fit:cover;object-position:50% 12%}
+.mq-c:hover{transform:scale(1.12);opacity:1}
+.hero369 .marq::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 50% 50%,rgba(255,250,253,.0) 30%,rgba(255,250,253,.0) 62%,rgba(255,245,251,.55) 100%)}
+.hero369:hover .mq-track{animation-play-state:paused}
+.h-center.has-group{z-index:2}
+@media (prefers-reduced-motion:reduce){.mq-track{animation:none}}
