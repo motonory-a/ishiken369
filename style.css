@@ -445,3 +445,16 @@ body.lb-open .mosaic{animation-play-state:paused}
 .qr-bday b{display:block;font-family:var(--head);color:#7d5bcc}
 .qr-bname{font-family:var(--head);font-weight:800;font-size:24px;color:var(--navy);margin:2px 0 8px}
 .qr-bname small{display:block;font-size:12px;color:#6b5aa0}
+
+/* ===== 2026-11-26 洗練版:ロゴと369人の輪 ===== */
+.logo{gap:10px}
+.logo-gem{width:36px;height:36px;clip-path:none;border-radius:50%;background:url(img/icon/icon-192.png) center/cover;box-shadow:0 0 0 2px #fff,0 0 0 3.5px #e8cd96,0 3px 10px rgba(190,110,170,.35);animation:none;filter:none}
+.logo-txt b{font-size:25px;letter-spacing:.04em;background:linear-gradient(100deg,#f06aa5 0%,#c46fe0 60%,#9a7cf0 100%);-webkit-background-clip:text;background-clip:text;color:transparent;animation:none}
+.logo-txt b::after{content:"";display:inline-block;width:9px;height:9px;margin-left:4px;vertical-align:.7em;background:#e8c46a;clip-path:polygon(50% 0,62% 38%,100% 50%,62% 62%,50% 100%,38% 62%,0 50%,38% 38%)}
+.logo-txt small{font-size:10.5px;letter-spacing:.22em;color:#9a6fb8;margin-top:3px}
+.hero369{background:radial-gradient(circle at 50% 50%,#fff 0,#fff5fa 36%,#f8eeff 66%,#f1e6ff 100%)}
+.hero369::before{opacity:.55}
+.mosaic{inset:0;-webkit-mask:none;mask:none}
+.h-center.has-group{width:60.5%;box-shadow:0 0 0 4px #fff,0 0 0 6px #e8cd96,0 0 0 12px rgba(255,255,255,.55),0 14px 44px 6px rgba(150,100,210,.28)}
+.h-hint{color:#a77fc4;letter-spacing:.06em}
+.h-hint{letter-spacing:.02em}

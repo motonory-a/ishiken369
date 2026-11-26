@@ -164,7 +164,7 @@ function vHome(){
   return `
   <section class="hero369" aria-label="369人の部員">
     <div class="sparkles" aria-hidden="true">${"<i></i>".repeat(14)}</div>
-    <div class="mosaic"><img src="img/mosaic.webp" alt="いしけん！の部員369人" width="1400" height="1400"></div></div>
+    <div class="mosaic"><img src="img/mosaic.webp?v=20261126" alt="いしけん！の部員369人" width="1400" height="1400"></div></div>
     <div class="h-center${IMG.group?" has-group":""}">
       ${IMG.group? `<a href="${IMG.group}" data-groupzoom="1"><img class="group" src="${IMG.group}" alt="いしけん！主要メンバーの集合絵"></a>`:`<div class="h-copy"><span class="h-count" data-count="369">0</span><span class="h-unit">人の部員が</span><span class="h-line">あなたの推しを<br>待っています</span></div>`}
     </div>
