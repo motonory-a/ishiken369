@@ -1816,6 +1816,11 @@
 "path": "01"
 },
 {
+"name": "4コマ_164_おみやげ.png",
+"id": "1GM-1qwwSoRd_pGh9rpyKSeyGULdPruve",
+"path": "01"
+},
+{
 "name": "いしけん4コマ_069_動く漫画.mp4",
 "id": "1o_dfru7HIyoRkJ-ASY1ARlOjoXBU0gZk",
 "path": "01"
@@ -5205,6 +5210,21 @@
 "path": "03"
 },
 {
+"name": "085_マリン_場面1.png",
+"id": "1BwIa6_-NrbSJk1JOC1Zgpt31g1-Xyz2d",
+"path": "03"
+},
+{
+"name": "085_マリン_場面2.png",
+"id": "1q027I8rvAlzXCIx875UGK6cSMFBA2bJp",
+"path": "03"
+},
+{
+"name": "085_マリン_場面3.png",
+"id": "1vHk3jKyIagdhFcqWRSGnOAXl79-u5weU",
+"path": "03"
+},
+{
 "name": "085_マリン_表情.png",
 "id": "115COaSO-G4FH2Aq2sZa5xKbITZyzIdGT",
 "path": "03"
@@ -5222,6 +5242,16 @@
 {
 "name": "086_スマラ_場面1.png",
 "id": "14RIzB7ZwKFzAl6tvyhtzj715pZxOeoqC",
+"path": "03"
+},
+{
+"name": "086_スマラ_場面2.png",
+"id": "1JxcvNPn0JzR4sunKhQFrqtAOG6hxW6rq",
+"path": "03"
+},
+{
+"name": "086_スマラ_場面3.png",
+"id": "17neWQcCb-X2dHOkQ-yYFNcZzYktkiMxq",
 "path": "03"
 },
 {
