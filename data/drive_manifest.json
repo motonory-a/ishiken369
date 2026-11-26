@@ -1751,6 +1751,11 @@
 "path": "01"
 },
 {
+"name": "4コマ_151_てつだって.png",
+"id": "16mC9zjXxT_ydCjrbcWa_GQ6NnTMcBnxs",
+"path": "01"
+},
+{
 "name": "いしけん4コマ_069_動く漫画.mp4",
 "id": "1o_dfru7HIyoRkJ-ASY1ARlOjoXBU0gZk",
 "path": "01"
@@ -4060,6 +4065,16 @@
 "path": "03"
 },
 {
+"name": "049_クレア_場面1.png",
+"id": "1ej9A_WI8L3X8ptHSau3vK5ZFpctrZZpW",
+"path": "03"
+},
+{
+"name": "049_クレア_場面2.png",
+"id": "1lTXb3RVuPPb6o3ZEkhQ4E4wu5cUJn0tf",
+"path": "03"
+},
+{
 "name": "049_クレア_表情.png",
 "id": "1aY5Ckaexezco-DxvNKeo5EvQPkTnEqJA",
 "path": "03"
@@ -4647,6 +4662,16 @@
 {
 "name": "069_ノクタ_場面1.png",
 "id": "1sd-JNVaROQVqvZgmgA4hUv8NEcthFuz7",
+"path": "03"
+},
+{
+"name": "069_ノクタ_場面2.png",
+"id": "1ftLfjv2fFgWvjX3KQG5CRis5YWgwYcQL",
+"path": "03"
+},
+{
+"name": "069_ノクタ_場面3.png",
+"id": "184Qg_iarQGCZZzfX4F2s48V7mkmpAGTu",
 "path": "03"
 },
 {
