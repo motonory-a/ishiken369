@@ -314,7 +314,7 @@ body{background:
 .hit:hover,.hit:focus-visible{box-shadow:0 0 0 2px #fff,0 0 0 4px #ff8fb8,0 0 14px 4px rgba(255,143,184,.7);transform:translate(-50%,-50%) scale(1.25);outline:none}
 .hit:active{transform:translate(-50%,-50%) scale(1.4)}
 .h-center.has-group{box-shadow:0 0 0 4px #fff,0 0 0 8px #f2cf86,0 0 0 11px #fff,0 0 0 13px #ffb3cf,0 12px 40px 12px rgba(255,120,170,.35)}
-.h-center.has-group::after{content:"";position:absolute;inset:0;border-radius:50%;background:linear-gradient(120deg,transparent 35%,rgba(255,255,255,.55) 50%,transparent 65%);background-size:250% 100%;animation:gloss 5s ease-in-out 2s infinite;pointer-events:none}
+.h-center.has-group::after{content:none}/* 2026-11-26 光の帯が見にくいので止めた */
 @keyframes gloss{0%{background-position:120% 0}40%,100%{background-position:-120% 0}}
 .h-hint{text-align:center;margin:10px 0 0;font-family:var(--head);font-size:13px;color:#d0598d;animation:hintpulse 2.4s ease-in-out infinite}
 @keyframes hintpulse{50%{opacity:.55}}
