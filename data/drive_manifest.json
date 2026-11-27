@@ -1961,6 +1961,11 @@
 "path": "01"
 },
 {
+"name": "4コマ_193_とっておき.png",
+"id": "1S2goC4OvC18R-nLiSUcR4t2Q02LFiKMg",
+"path": "01"
+},
+{
 "name": "ishiken369_en_アイコン_005ルチカ_1080.png",
 "id": "1ahLotGZknlfYx0-IzElBuB-dby7bPeqk",
 "path": "01"
@@ -6735,6 +6740,21 @@
 "path": "03"
 },
 {
+"name": "131_タンザ_場面1.png",
+"id": "1FSJk-rpJJmLBuhbmCGso5XJ7P6ewbfll",
+"path": "03"
+},
+{
+"name": "131_タンザ_場面2.png",
+"id": "1CElsVMpQS5_aS7_5wCq75KXbK3gU3OlU",
+"path": "03"
+},
+{
+"name": "131_タンザ_場面3.png",
+"id": "1hkHumY9vID-54ZTk4n2bOStMptVWijAg",
+"path": "03"
+},
+{
 "name": "131_タンザ_表情.png",
 "id": "1N6Fcv0xQhbUKDam87Dk8uxd3pkWJrPTP",
 "path": "03"
@@ -7697,11 +7717,6 @@
 {
 "name": "188_サンナ_表情.png",
 "id": "1C3vj2YqF51udZr3YXeskrsgpb8ThJlnV",
-"path": "03"
-},
-{
-"name": "189_アバネ_ポーズ.png",
-"id": "16sYErmXQo-nizlubObrA7aA55GBZDZNZ",
 "path": "03"
 },
 {
