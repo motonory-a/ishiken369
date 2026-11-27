@@ -1836,6 +1836,11 @@
 "path": "01"
 },
 {
+"name": "4コマ_168_わからない.png",
+"id": "1CYXDzhDbJXATc5vtMt8Jmnu0ZW5jRRcv",
+"path": "01"
+},
+{
 "name": "いしけん4コマ_069_動く漫画.mp4",
 "id": "1o_dfru7HIyoRkJ-ASY1ARlOjoXBU0gZk",
 "path": "01"
@@ -5345,6 +5350,21 @@
 "path": "03"
 },
 {
+"name": "089_ゴシェ_場面1.png",
+"id": "1U5qIkuT25z2FfKpq2uxuGft99CPJNk2R",
+"path": "03"
+},
+{
+"name": "089_ゴシェ_場面2.png",
+"id": "1OW20mqWR6z7zdmya-tAraq1BYruwGyjx",
+"path": "03"
+},
+{
+"name": "089_ゴシェ_場面3.png",
+"id": "1t4WzEgVDXrd1o5lGuU_wo4a9XI6wfsgQ",
+"path": "03"
+},
+{
 "name": "089_ゴシェ_表情.png",
 "id": "1wB9lnkIVpjtBxR9L95wyEx3_aLhSGLXy",
 "path": "03"
@@ -5357,6 +5377,21 @@
 {
 "name": "090_ベリル_三面図.png",
 "id": "1rVMTz1DIXmYoeczYMlKNZ53YZUS9RqZc",
+"path": "03"
+},
+{
+"name": "090_ベリル_場面1.png",
+"id": "1j5FR27l_ttEQ4QSML-KpkmHl-4mVuO7h",
+"path": "03"
+},
+{
+"name": "090_ベリル_場面2.png",
+"id": "1ZernACy7InC6Q557H3horEM-CugFnD4h",
+"path": "03"
+},
+{
+"name": "090_ベリル_場面3.png",
+"id": "1w7PDnixHPZQ7w9IMNVnFqEI5MXl5pTjO",
 "path": "03"
 },
 {
