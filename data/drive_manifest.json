@@ -1966,6 +1966,11 @@
 "path": "01"
 },
 {
+"name": "4コマ_194_みせて.png",
+"id": "1ExRJTSuC2AJbCg6IDow6Ndz06tv7Kke1",
+"path": "01"
+},
+{
 "name": "ishiken369_en_アイコン_005ルチカ_1080.png",
 "id": "1ahLotGZknlfYx0-IzElBuB-dby7bPeqk",
 "path": "01"
@@ -7085,6 +7090,21 @@
 "path": "03"
 },
 {
+"name": "146_ヒデリア_場面1.png",
+"id": "1eUjYkROFLMKVuTkgsrhrIHyYpq45aX7I",
+"path": "03"
+},
+{
+"name": "146_ヒデリア_場面2.png",
+"id": "1sFnIm3-3hwuYVrM85T4SDAinCDJNiGFn",
+"path": "03"
+},
+{
+"name": "146_ヒデリア_場面3.png",
+"id": "18T_f1cMcAsdSRpng5OfnzjB0hHqIuV-4",
+"path": "03"
+},
+{
 "name": "146_ヒデリア_表情.png",
 "id": "1mPxlXlQbvJqeIHZmFLNUskBS8tvKRoPV",
 "path": "03"
@@ -7717,6 +7737,11 @@
 {
 "name": "188_サンナ_表情.png",
 "id": "1C3vj2YqF51udZr3YXeskrsgpb8ThJlnV",
+"path": "03"
+},
+{
+"name": "189_アバネ_ポーズ.png",
+"id": "16sYErmXQo-nizlubObrA7aA55GBZDZNZ",
 "path": "03"
 },
 {
