@@ -2011,6 +2011,11 @@
 "path": "01"
 },
 {
+"name": "4コマ_203_どうぞどうぞ.png",
+"id": "1mghh624M07nVUsUJUjsLnsIXstgx-jM6",
+"path": "01"
+},
+{
 "name": "ishiken369_en_アイコン_005ルチカ_1080.png",
 "id": "1ahLotGZknlfYx0-IzElBuB-dby7bPeqk",
 "path": "01"
@@ -7265,6 +7270,21 @@
 "path": "03"
 },
 {
+"name": "147_ダンビ_場面1.png",
+"id": "1Y3hdRALWpvRh6xtZ0AJ2j359mE3-ZeTy",
+"path": "03"
+},
+{
+"name": "147_ダンビ_場面2.png",
+"id": "1HJa-rY4GvfgB5O2VexR2-yqC0gCV_bIX",
+"path": "03"
+},
+{
+"name": "147_ダンビ_場面3.png",
+"id": "1n1kSpRGde1nDSprMvci_3Ggd-POMxOBU",
+"path": "03"
+},
+{
 "name": "147_ダンビ_表情.png",
 "id": "1QefWcjK5Jo1mMH8zKZVaP-Zu9ehWllUp",
 "path": "03"
@@ -7307,6 +7327,11 @@
 {
 "name": "149_アンダ_三面図.png",
 "id": "1ZIhz6zSF8Tki0wEOHUo97LJY6oaKm6n2",
+"path": "03"
+},
+{
+"name": "149_アンダ_場面1.png",
+"id": "12Eab-vHscFb3CRA0nVM0yw95nvDZhslE",
 "path": "03"
 },
 {
@@ -7550,6 +7575,21 @@
 "path": "03"
 },
 {
+"name": "160_ディオナ_場面1.png",
+"id": "1el2hfx4kd0um6T-z4-nQ78yZvx_r3Lpq",
+"path": "03"
+},
+{
+"name": "160_ディオナ_場面2.png",
+"id": "14mvH83N_thoFlcS_hfVT9bpAx1GhdOgq",
+"path": "03"
+},
+{
+"name": "160_ディオナ_場面3.png",
+"id": "195rOXpj8ETxJmeh_MniZEcZkYcvelnwV",
+"path": "03"
+},
+{
 "name": "160_ディオナ_表情.png",
 "id": "1PWFcc5jgZ3aEw340vGcYtKerjtd__K22",
 "path": "03"
@@ -7577,6 +7617,21 @@
 {
 "name": "162_ネフラ_三面図.png",
 "id": "1Ot580_83Ndhh-LaKBOZ3_cFpWtdj-GVa",
+"path": "03"
+},
+{
+"name": "162_ネフラ_場面1.png",
+"id": "1ZvuZjbc3C1htzx64I1EBupLR0L8MEmTO",
+"path": "03"
+},
+{
+"name": "162_ネフラ_場面2.png",
+"id": "1BkPTzb3Y27I7PsmqU4WdiLv1MIpsmYIf",
+"path": "03"
+},
+{
+"name": "162_ネフラ_場面3.png",
+"id": "1XIDzMZ1v5MpgH0VEOFDPCmZq7qCbY2cm",
 "path": "03"
 },
 {
