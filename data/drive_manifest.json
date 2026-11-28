@@ -2061,6 +2061,11 @@
 "path": "01"
 },
 {
+"name": "4コマ_213_ひゃくねんもの.png",
+"id": "1DVm0mDJV7LYPQ2zJQR0AjhYaQoMpBqco",
+"path": "01"
+},
+{
 "name": "ishiken369_en_アイコン_005ルチカ_1080.png",
 "id": "1ahLotGZknlfYx0-IzElBuB-dby7bPeqk",
 "path": "01"
@@ -7975,6 +7980,21 @@
 "path": "03"
 },
 {
+"name": "169_フォスティ_場面1.png",
+"id": "1Cp5CjcM_2ACz9Aou2otjPu21g1eLq9V4",
+"path": "03"
+},
+{
+"name": "169_フォスティ_場面2.png",
+"id": "13YaRIotqRCQnN7X-94suclJ5iXIjLGYO",
+"path": "03"
+},
+{
+"name": "169_フォスティ_場面3.png",
+"id": "1KNSu6-k_AVj_U8Ou5yodl2_4ZPFt2zqo",
+"path": "03"
+},
+{
 "name": "169_フォスティ_表情.png",
 "id": "1SqUbCE1VqdNQl1OVWXMH0jZgkqV0Phwg",
 "path": "03"
@@ -8392,6 +8412,21 @@
 {
 "name": "188_サンナ_三面図.png",
 "id": "1GfvxGeHhbj0MGJISfEBqGmNVuxtF_f24",
+"path": "03"
+},
+{
+"name": "188_サンナ_場面1.png",
+"id": "1VB2MfgNbTLZFDRcZtMlOaUGxMvVQAU0v",
+"path": "03"
+},
+{
+"name": "188_サンナ_場面2.png",
+"id": "1xpzMBSxMctBV7-FztkjA3HDT5IWWBDBP",
+"path": "03"
+},
+{
+"name": "188_サンナ_場面3.png",
+"id": "1HgfREGaT0yUS49MA79HhI4yX4-DPLmi7",
 "path": "03"
 },
 {
