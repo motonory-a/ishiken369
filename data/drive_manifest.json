@@ -2076,6 +2076,11 @@
 "path": "01"
 },
 {
+"name": "4コマ_216_かざりすぎ.png",
+"id": "1_esPuLgtUuuPO2UTb802--qaSr8eAXCo",
+"path": "01"
+},
+{
 "name": "ishiken369_en_アイコン_005ルチカ_1080.png",
 "id": "1ahLotGZknlfYx0-IzElBuB-dby7bPeqk",
 "path": "01"
@@ -8170,6 +8175,21 @@
 "path": "03"
 },
 {
+"name": "175_モルダ_場面1.png",
+"id": "1BQSD69ZAvpZ5qorZMVztC8zrhhWwUj66",
+"path": "03"
+},
+{
+"name": "175_モルダ_場面2.png",
+"id": "1T9wp04tH7tVQhk167eeVXt8RaTm_MNGa",
+"path": "03"
+},
+{
+"name": "175_モルダ_場面3.png",
+"id": "186wnW0b1Xq8SiJS9i5xAKfvwQgd_6Z4P",
+"path": "03"
+},
+{
 "name": "175_モルダ_表情.png",
 "id": "1f9MkqSh7vYJcUj4qvk6g0eTdPIlB-iYg",
 "path": "03"
@@ -8587,6 +8607,11 @@
 {
 "name": "194_プラシア_三面図.png",
 "id": "1QrhAXdvMwmny_rqL2Zl0t8qtYcr0Z34j",
+"path": "03"
+},
+{
+"name": "194_プラシア_場面1.png",
+"id": "1SCR5oBRCUWXkhrgGM7ayBvBr1acBuAtW",
 "path": "03"
 },
 {
