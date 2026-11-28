@@ -2051,6 +2051,11 @@
 "path": "01"
 },
 {
+"name": "4コマ_211_うちゅうへいこう.png",
+"id": "1_ykG3SjMBGwEPH_rlneiwB9O5YL2kwZF",
+"path": "01"
+},
+{
 "name": "ishiken369_en_アイコン_005ルチカ_1080.png",
 "id": "1ahLotGZknlfYx0-IzElBuB-dby7bPeqk",
 "path": "01"
@@ -7785,6 +7790,21 @@
 "path": "03"
 },
 {
+"name": "163_カルナ_場面1.png",
+"id": "1MbZ5R2LiQp-snZRis1ZkaVQ3roU_42xZ",
+"path": "03"
+},
+{
+"name": "163_カルナ_場面2.png",
+"id": "1sk55tCayv_8JnwHnp74LFapOijk15d9Q",
+"path": "03"
+},
+{
+"name": "163_カルナ_場面3.png",
+"id": "1h84VUDflmJIzhckqcYFenKmqO_qm28no",
+"path": "03"
+},
+{
 "name": "163_カルナ_表情.png",
 "id": "1kM01Jr3cRb8ytRfnVgV8PUprrcP_gAy9",
 "path": "03"
@@ -8247,6 +8267,21 @@
 {
 "name": "184_ジェッタ_三面図.png",
 "id": "1gUs38vbj2FQ12AxqAi7sFXECQ0rpEKjP",
+"path": "03"
+},
+{
+"name": "184_ジェッタ_場面1.png",
+"id": "1ah7je9ehgQURnypdTmQIEcDwFiA7O7xB",
+"path": "03"
+},
+{
+"name": "184_ジェッタ_場面2.png",
+"id": "1eRskGeKTA4Pi30eKz6U-xFOohQAXQFF1",
+"path": "03"
+},
+{
+"name": "184_ジェッタ_場面3.png",
+"id": "1LXTi_OUnu1aNI5TKDRBne0qZEI0fI73v",
 "path": "03"
 },
 {
